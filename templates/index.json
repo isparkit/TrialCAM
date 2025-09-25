@@ -390,7 +390,7 @@
         "padding_bottom_mobile": 36,
         "color_scheme": "",
         "show_arrows": true,
-        "show_dots": false,
+        "show_dots": true,
         "show_progress": false,
         "show_read_more": true,
         "heading": "Fremragende",
