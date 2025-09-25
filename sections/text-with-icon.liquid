@@ -1,0 +1,698 @@
+{% style %}
+.text-with-icon {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.text-with-icon__container {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  border-radius: {{ section.settings.border_radius }}px;
+  overflow: hidden;
+  {% if section.settings.custom_background_color != blank %}
+    background: {{ section.settings.custom_background_color }};
+  {% else %}
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15);
+    /* background: {% if section.settings.use_gradient %}linear-gradient(135deg, rgba(var(--color-foreground), 0.06), rgba(var(--color-foreground), 0.01)){% else %}rgba(var(--color-foreground), 0.03){% endif %}; */
+  {% endif %}
+  /* padding: 3rem 2rem; */
+  --page-width: 1110px;
+}
+
+.text-with-icon__heading {
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Display control classes */
+.hide-mobile {
+  display: none !important;
+}
+
+.hide-desktop-only {
+  display: block;
+}
+
+@media screen and (min-width: 750px) {
+  .hide-mobile {
+    display: block !important;
+  }
+  
+  .hide-desktop-only {
+    display: none;
+  }
+}
+
+.text-with-icon-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.text-with-icon__list {
+  display: flex;
+  gap: 20px;
+}
+
+.text-with-icon__item {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: {{ section.settings.text_position }};
+  {% if section.settings.text_position == 'column' %}
+  align-items: center;
+  text-align: center;
+  {% else %}
+  align-items: flex-start;
+  text-align: left;
+  {% endif %}
+  padding: 2rem;
+  height: 100%;
+  background: transparent;
+}
+
+.text-with-icon__item.text-left {
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.text-with-icon__icon-wrapper {
+  {% if section.settings.text_position == 'column' %}
+  margin-bottom: 1.5rem;
+  {% else %}
+  margin-bottom: 0;
+  {% endif %}
+  {% if section.settings.text_position == 'row' %}
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  {% endif %}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  {% if section.settings.text_position == 'row' %}
+  width: 60px;
+  {% else %}
+  width: auto;
+  {% endif %}
+}
+
+.text-with-icon__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.text-with-icon__icon {
+  max-width: 60px;
+  max-height: 60px;
+  
+}
+.text-with-icon__icon img{
+  object-fit: contain;
+}
+
+
+.text-with-icon__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.text-with-icon__icon svg path {
+  fill: currentColor;
+}
+
+.text-with-icon__title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.text-with-icon__text p {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+/* Slideshow styling */
+.text-with-icon__slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-with-icon__slider .text-with-icon__list {
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.text-with-icon__slider .text-with-icon__list::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.text-with-icon__slider .text-with-icon__item {
+  scroll-snap-align: start;
+  min-width: 
+  {% if section.settings.mobile_slide_count > 0 %}
+    calc(100% / {{ section.settings.mobile_slide_count }});
+  {% else %}
+    100%;
+  {% endif %}
+}
+
+.slider-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.slider-button {
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-button svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.slider-button svg path {
+  fill: currentColor;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 0.5rem;
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(var(--color-foreground), 0.15);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.slider-dot.active {
+  background: rgba(var(--color-foreground), 0.75);
+}
+
+/* Mobile styles */
+@media screen and (max-width: 749px) {
+  .text-with-icon__heading {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .text-with-icon__slider .text-with-icon__item {
+    min-width: calc(100% / {{ section.settings.mobile_slide_count }});
+  }
+  
+  .text-with-icon__title {
+    font-size: 1.6rem;
+  }
+  
+  /* Fix for mobile SVG icon color */
+  .text-with-icon__icon svg, 
+  .text-with-icon__icon svg path,
+  .slider-button svg,
+  .slider-button svg path {
+    fill: currentColor !important;
+    stroke: none !important;
+  }
+}
+
+/* Section padding */
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top | times: 1 | round: 0 }}px;
+  padding-bottom: {{ section.settings.padding_bottom | times: 1 | round: 0 }}px;
+}
+
+@media screen and (min-width: 750px) {
+  
+  
+  .text-with-icon__container {
+    /* padding: 4rem 3rem; */
+  }
+  
+  .text-with-icon-grid {
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    display: grid !important;
+  }
+}
+
+@media (max-width: 749px){
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+}
+
+{% endstyle %}
+
+<div class="text-with-icon color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+  <div class="text-with-icon__container">
+    {% if section.settings.title != blank %}
+      <h2 class="text-with-icon__heading">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    {% assign has_multiple_blocks = false %}
+    {% if section.blocks.size > 1 %}
+      {% assign has_multiple_blocks = true %}
+    {% endif %}
+    
+    <!-- Desktop: Either Grid or Slideshow -->
+    {% if has_multiple_blocks and section.settings.enable_slider_desktop and section.settings.desktop_slide_count < section.blocks.size %}
+      <!-- Desktop Slideshow -->
+      <div class="text-with-icon__slider hide-mobile">
+        <div class="text-with-icon__list" id="slider-desktop-{{ section.id }}" aria-label="Slideshow">
+          {% for block in section.blocks %}
+            <div class="text-with-icon__item" {{ block.shopify_attributes }}>
+              <div class="text-with-icon__icon-wrapper">
+                {% if block.settings.icon != blank %}
+                  <div class="text-with-icon__icon">
+                    {{ block.settings.icon }}
+                  </div>
+                {% elsif block.settings.icon_image != blank %}
+                  <div class="text-with-icon__icon">
+                    <img src="{{ block.settings.icon_image | image_url: width: 60 }}" alt="{{ block.settings.title }}" width="60" height="60" loading="lazy">
+                  </div>
+                {% endif %}
+              </div>
+              <div class="text-with-icon__content">
+                <h3 class="text-with-icon__title">{{ block.settings.title }}</h3>
+                <div class="text-with-icon__text">{{ block.settings.text }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        
+        {% if section.settings.show_navigation %}
+          <div class="slider-buttons">
+            <button type="button" class="slider-button slider-button--prev" aria-label="Previous slide" data-target="slider-desktop-{{ section.id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="slider-button slider-button--next" aria-label="Next slide" data-target="slider-desktop-{{ section.id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        {% endif %}
+        
+        {% if section.settings.show_dots %}
+          <div class="slider-dots" id="dots-desktop-{{ section.id }}">
+            {% for i in (1..section.blocks.size) %}
+              <button type="button" class="slider-dot {% if forloop.first %}active{% endif %}" aria-label="Go to slide {{ i }}" data-index="{{ forloop.index0 }}" data-target="slider-desktop-{{ section.id }}"></button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% else %}
+      <!-- Desktop Grid -->
+      <div class="text-with-icon-grid hide-mobile">
+        {% for block in section.blocks %}
+          <div class="text-with-icon__item" {{ block.shopify_attributes }}>
+            <div class="text-with-icon__icon-wrapper">
+              {% if block.settings.icon != blank %}
+                <div class="text-with-icon__icon">
+                  {{ block.settings.icon }}
+                </div>
+              {% elsif block.settings.icon_image != blank %}
+                <div class="text-with-icon__icon">
+                  <img src="{{ block.settings.icon_image | image_url: width: 60 }}" alt="{{ block.settings.title }}" width="60" height="60" loading="lazy">
+                </div>
+              {% endif %}
+            </div>
+            <div class="text-with-icon__content">
+              <h3 class="text-with-icon__title">{{ block.settings.title }}</h3>
+              <div class="text-with-icon__text">{{ block.settings.text }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+    <!-- Mobile: Always Slideshow -->
+    <div class="text-with-icon__slider hide-desktop-only">
+      <div class="text-with-icon__list" id="slider-mobile-{{ section.id }}" aria-label="Slideshow">
+        {% for block in section.blocks %}
+          <div class="text-with-icon__item" {{ block.shopify_attributes }}>
+            <div class="text-with-icon__icon-wrapper">
+              {% if block.settings.icon != blank %}
+                <div class="text-with-icon__icon">
+                  {{ block.settings.icon }}
+                </div>
+              {% elsif block.settings.icon_image != blank %}
+                <div class="text-with-icon__icon">
+                  <img src="{{ block.settings.icon_image | image_url: width: 60 }}" alt="{{ block.settings.title }}" width="60" height="60" loading="lazy">
+                </div>
+              {% endif %}
+            </div>
+            <div class="text-with-icon__content">
+              <h3 class="text-with-icon__title">{{ block.settings.title }}</h3>
+              <div class="text-with-icon__text">{{ block.settings.text }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      
+      {% if section.settings.show_navigation %}
+        <div class="slider-buttons">
+          <button type="button" class="slider-button slider-button--prev" aria-label="Previous slide" data-target="slider-mobile-{{ section.id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button type="button" class="slider-button slider-button--next" aria-label="Next slide" data-target="slider-mobile-{{ section.id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      {% endif %}
+      
+      {% if section.settings.show_dots %}
+        <div class="slider-dots" id="dots-mobile-{{ section.id }}">
+          {% for i in (1..section.blocks.size) %}
+            <button type="button" class="slider-dot {% if forloop.first %}active{% endif %}" aria-label="Go to slide {{ i }}" data-index="{{ forloop.index0 }}" data-target="slider-mobile-{{ section.id }}"></button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize desktop slider
+  const desktopSlider = document.getElementById('slider-desktop-{{ section.id }}');
+  if (desktopSlider) {
+    initializeSlider(desktopSlider, 'dots-desktop-{{ section.id }}');
+  }
+  
+  // Initialize mobile slider
+  const mobileSlider = document.getElementById('slider-mobile-{{ section.id }}');
+  if (mobileSlider) {
+    initializeSlider(mobileSlider, 'dots-mobile-{{ section.id }}');
+  }
+  
+  function initializeSlider(slider, dotsId) {
+    const slideWidth = slider.querySelector('.text-with-icon__item').offsetWidth;
+    const prevButton = document.querySelector(`.slider-button--prev[data-target="${slider.id}"]`);
+    const nextButton = document.querySelector(`.slider-button--next[data-target="${slider.id}"]`);
+    const dots = document.querySelectorAll(`#${dotsId} .slider-dot`);
+    
+    // Set up prev/next buttons
+    if (prevButton) {
+      prevButton.addEventListener('click', function() {
+        const currentPosition = slider.scrollLeft;
+        const targetPosition = Math.max(0, currentPosition - slideWidth);
+        slider.scrollTo({
+          left: targetPosition,
+          behavior: 'smooth'
+        });
+        updateActiveDot(Math.round(targetPosition / slideWidth));
+      });
+    }
+    
+    if (nextButton) {
+      nextButton.addEventListener('click', function() {
+        const currentPosition = slider.scrollLeft;
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        const targetPosition = Math.min(maxScroll, currentPosition + slideWidth);
+        slider.scrollTo({
+          left: targetPosition,
+          behavior: 'smooth'
+        });
+        updateActiveDot(Math.round(targetPosition / slideWidth));
+      });
+    }
+    
+    // Set up dots
+    dots.forEach(dot => {
+      dot.addEventListener('click', function() {
+        const index = parseInt(dot.dataset.index);
+        slider.scrollTo({
+          left: index * slideWidth,
+          behavior: 'smooth'
+        });
+        updateActiveDot(index);
+      });
+    });
+    
+    // Update active dot based on scroll position
+    slider.addEventListener('scroll', function() {
+      const currentPosition = slider.scrollLeft;
+      const index = Math.round(currentPosition / slideWidth);
+      updateActiveDot(index);
+    });
+    
+    function updateActiveDot(index) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Text with Icon",
+  "class": "section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our Services"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "column",
+          "label": "Below icon"
+        },
+        {
+          "value": "row",
+          "label": "Right of icon"
+        }
+      ],
+      "default": "column"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "label": "Columns desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_slider_desktop",
+      "default": false,
+      "label": "Enable slideshow on desktop"
+    },
+    {
+      "type": "range",
+      "id": "desktop_slide_count",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "label": "Items per slide desktop"
+    },
+    {
+      "type": "range",
+      "id": "mobile_slide_count",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1,
+      "label": "Items per slide mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show previous/next buttons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show dots",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 8,
+      "unit": "px",
+      "label": "Border radius"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_gradient",
+      "default": true,
+      "label": "Use gradient background"
+    },
+    {
+      "type": "color",
+      "id": "custom_background_color",
+      "label": "Custom background color",
+      "info": "Takes precedence over gradient and color scheme"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon with Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image"
+        },
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "SVG icon",
+          "info": "Paste your SVG code here. Takes precedence over icon image."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Pair text with an icon to describe a service or feature of your business.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text with Icon",
+      "blocks": [
+        {
+          "type": "icon",
+          "settings": {
+            "title": "Levering 2-4 Hverdage",
+            "text": "<p>Fri Fragt Ved Køb Over 499,-</p>"
+          }
+        },
+        {
+          "type": "icon",
+          "settings": {
+            "title": "Tilfredshedsgaranti",
+            "text": "<p>Prøv Risikofrit I 30 Dage</p>"
+          }
+        },
+        {
+          "type": "icon",
+          "settings": {
+            "title": "Dansk Kundeservice",
+            "text": "<p>Vi Besvarer Henvendelser Indenfor 12 Timer</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 

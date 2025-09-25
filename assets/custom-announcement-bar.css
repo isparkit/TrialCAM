@@ -1,0 +1,251 @@
+.custom-announcement {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.announcement-blocks {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.announcement-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 0.8rem;
+  flex: 1;
+}
+ 
+.announcement-block__icon {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.announcement-block__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.announcement-block__icon svg path {
+  stroke-width: 1px;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.announcement-block__icon img.icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.announcement-block__text {
+  font-size: calc(var(--font-heading-scale) * 1.2rem);
+  line-height: 1.3;
+}
+
+/* Mobile Slideshow */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  padding: 0 30px; /* Add padding for the navigation buttons */
+}
+
+.announcement-slide {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  /* padding: 1rem 0; */
+}
+
+.announcement-slide.active {
+  display: flex;
+}
+
+/* Navigation controls */
+.slide-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--color-foreground), 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.slide-control:hover {
+  background: rgba(var(--color-foreground), 0.2);
+}
+
+.slide-control--prev {
+  left: 0;
+}
+
+.slide-control--next {
+  right: 0;
+}
+
+.slide-control .svg-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-control svg {
+  width: 16px;
+  height: 16px;
+}
+
+.slide-control svg path {
+  stroke-width: 2px;
+  stroke: currentColor;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Indicators */
+.slide-indicators {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 0;
+}
+
+.slide-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background-color: rgba(var(--color-foreground), 0.3);
+  cursor: pointer;
+}
+
+.slide-indicator.active {
+  background-color: rgba(var(--color-foreground), 0.8);
+}
+
+/* Media queries */
+@media screen and (max-width: 989px) {
+  .announcement-blocks {
+    display: none;
+  }
+  
+  .slideshow-container {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .slideshow-container {
+    display: none;
+    padding: 0; /* Reset padding for desktop */
+  }
+  
+  .announcement-blocks {
+    display: flex;
+  }
+}
+
+/* Detailed Padding Settings */
+/* Top/Bottom Padding */
+.custom-announcement--padding-top-none {
+  padding-top: 0;
+}
+
+.custom-announcement--padding-top-small {
+  padding-top: 0.5rem;
+}
+
+.custom-announcement--padding-top-medium {
+  padding-top: 1rem;
+}
+
+.custom-announcement--padding-top-large {
+  padding-top: 1.5rem;
+}
+
+.custom-announcement--padding-bottom-none {
+  padding-bottom: 0;
+}
+
+.custom-announcement--padding-bottom-small {
+  padding-bottom: 0.5rem;
+}
+
+.custom-announcement--padding-bottom-medium {
+  padding-bottom: 1rem;
+}
+
+.custom-announcement--padding-bottom-large {
+  padding-bottom: 1.5rem;
+}
+
+/* Left/Right Padding for blocks */
+.announcement-block--padding-horizontal-small {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.announcement-block--padding-horizontal-medium {
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+}
+
+.announcement-block--padding-horizontal-large {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Legacy Section Settings Controls */
+.custom-announcement--padding-small {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.custom-announcement--padding-medium {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.custom-announcement--padding-large {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* Theme accessibility and utility classes */
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  word-wrap: normal !important;
+} 

@@ -1,0 +1,737 @@
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{{ 'newsletter-section.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  
+  #Newsletter-{{ section.id }} {
+    {% if section.settings.background_image != blank %}
+      background-image: url({{ section.settings.background_image | image_url }});
+      background-position: {{ section.settings.background_position }};
+      background-size: {{ section.settings.background_size }};
+      background-repeat: no-repeat;
+      position: relative;
+    {% elsif section.settings.background_color != blank %}
+      background-color: {{ section.settings.background_color }};
+    {% endif %}
+    
+    {% if section.settings.background_overlay_color != blank and section.settings.background_image != blank %}
+      isolation: isolate;
+    {% endif %}
+    
+    /* CSS Variables for newsletter styling */
+    --newsletter-bg-color: {{ section.settings.input_background | default: 'transparent' }};
+    --newsletter-text-color: {{ section.settings.input_text_color | default: 'inherit' }};
+    --newsletter-border-color: {{ section.settings.input_border_color | default: '#d9d9d9' }};
+    --newsletter-border-width: {{ section.settings.input_border_width }}px;
+    --newsletter-border-radius: {{ section.settings.input_border_radius }}px;
+    --newsletter-padding: {{ section.settings.input_padding }}px;
+    --newsletter-button-bg-color: {{ section.settings.button_background | default: 'inherit' }};
+    --newsletter-button-text-color: {{ section.settings.button_text_color | default: 'inherit' }};
+    --newsletter-button-radius: {{ section.settings.button_border_radius }}px;
+    --newsletter-button-padding: {{ section.settings.button_padding }}px;
+    --newsletter-button-weight: {{ section.settings.button_weight }};
+  }
+  
+  {% if section.settings.background_overlay_color != blank and section.settings.background_image != blank %}
+    #Newsletter-{{ section.id }}::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: {{ section.settings.background_overlay_color }};
+      opacity: {{ section.settings.background_overlay_opacity }};
+      z-index: -1;
+    }
+  {% endif %}
+  
+  #Newsletter-{{ section.id }}.newsletter__wrapper {
+    {% if section.settings.full_width == false %}
+      width: 100%;
+      max-width: {{ section.settings.content_width }}px;
+      margin-left: auto;
+      margin-right: auto;
+    {% endif %}
+    padding: {{ section.settings.content_padding }}px;
+    {% if section.settings.content_background != blank %}
+      background-color: {{ section.settings.content_background }};
+    {% endif %}
+    {% if section.settings.content_border_radius > 0 %}
+      border-radius: {{ section.settings.content_border_radius }}px;
+    {% endif %}
+    {% if section.settings.content_box_shadow %}
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    {% endif %}
+  }
+  
+  #Newsletter-{{ section.id }} .newsletter__heading {
+    margin-bottom: {{ section.settings.heading_spacing }}px;
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: {{ section.settings.heading_weight }};
+    {% if section.settings.heading_color != blank %}
+      color: {{ section.settings.heading_color }};
+    {% endif %}
+  }
+  
+  #Newsletter-{{ section.id }} .newsletter__text {
+    margin-bottom: {{ section.settings.text_spacing }}px;
+    font-size: {{ section.settings.text_size }}px;
+    {% if section.settings.text_color != blank %}
+      color: {{ section.settings.text_color }};
+    {% endif %}
+  }
+  
+  /* Enhanced input field styles with higher specificity */
+  #Newsletter-{{ section.id }} .field__input,
+  .newsletter .field__input,
+  .newsletter-form .field__input,
+  .newsletter__wrapper .field__input {
+    background-color: var(--newsletter-bg-color, transparent) !important;
+    color: var(--newsletter-text-color, inherit) !important;
+    border-color: var(--newsletter-border-color, inherit) !important;
+    border-width: var(--newsletter-border-width, 1px) !important;
+    border-radius: var(--newsletter-border-radius, 0) !important;
+    border-style: solid;
+    padding: var(--newsletter-padding, 10px) !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 45px !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Enhanced button styles with higher specificity */
+  #Newsletter-{{ section.id }} .newsletter-form__button,
+  .newsletter .newsletter-form__button,
+  .newsletter-form .newsletter-form__button,
+  .newsletter__wrapper .newsletter-form__button {
+    background-color: var(--newsletter-button-bg-color, inherit) !important;
+    color: var(--newsletter-button-text-color, inherit) !important;
+    border-radius: var(--newsletter-button-radius, 0) !important;
+    padding: 10px var(--newsletter-button-padding, 0) !important;
+    font-weight: var(--newsletter-button-weight, inherit) !important;
+  }
+  
+  /* Focus state for input field */
+  #Newsletter-{{ section.id }} .field__input:focus {
+    outline-color: var(--newsletter-focus-color, #fff) !important;
+    border-color: var(--newsletter-focus-color, #fff) !important;
+  }
+  #Newsletter-{{ section.id }} .newsletter-form{
+    min-width: 300px;
+    margin-top: 20px;
+  }
+  #Newsletter-{{ section.id }} .field::before, #Newsletter-{{ section.id }} .field::after{
+    border-radius: var(--newsletter-button-radius, 0) !important;
+  }
+  #Newsletter-{{ section.id }} .field__label{
+    color: var(--newsletter-text-color, inherit) !important;
+  }
+  #Newsletter-{{ section.id }} .field__input:focus~.field__label{
+    top: calc(var(--inputs-border-width) - 2.5rem);
+  }
+  #Newsletter-{{ section.id }} .field__input {
+    box-shadow: none;
+  }
+  #Newsletter-{{ section.id }} .field:after, #Newsletter-{{ section.id }} .field:before{
+    display: none;
+  }
+{%- endstyle -%}
+
+<div class="newsletter color-{{ section.settings.color_scheme }} isolate{% if section.settings.full_width %} newsletter--full-width{% endif %}">
+  <div class="newsletter__wrapper section-{{ section.id }}-padding" id="Newsletter-{{ section.id }}">
+    <div class="newsletter__content {% if section.settings.horizontal_alignment == 'center' %}center{% elsif section.settings.horizontal_alignment == 'right' %}right{% else %}left{% endif %}-aligned {% if section.settings.vertical_alignment == 'center' %}vertical-center{% elsif section.settings.vertical_alignment == 'bottom' %}vertical-bottom{% else %}vertical-top{% endif %}">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            <h2 class="newsletter__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+              {{ block.settings.heading | escape }}
+            </h2>
+          {%- when 'paragraph' -%}
+            <div class="newsletter__text rte" {{ block.shopify_attributes }}>
+              {{ block.settings.text }}
+            </div>
+          {%- when 'email_form' -%}
+            <div {{ block.shopify_attributes }}>
+              {% form 'customer', class: 'newsletter-form' %}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <div class="newsletter-form__field-wrapper">
+                  <div class="field">
+                    <input
+                      id="NewsletterForm--{{ section.id }}"
+                      type="email"
+                      name="contact[email]"
+                      class="field__input"
+                      value="{{ form.email }}"
+                      aria-required="true"
+                      autocorrect="off"
+                      autocapitalize="off"
+                      autocomplete="email"
+                      {% if form.errors %}
+                        autofocus
+                        aria-invalid="true"
+                        aria-describedby="Newsletter-error--{{ section.id }}"
+                      {% elsif form.posted_successfully? %}
+                        aria-describedby="Newsletter-success--{{ section.id }}"
+                      {% endif %}
+                      placeholder="{{ section.settings.input_placeholder | escape }}"
+                      required
+                    >
+                    <label class="field__label" for="NewsletterForm--{{ section.id }}">
+                      {{ section.settings.input_placeholder | escape }}
+                    </label>
+                  </div>
+                  {%- if form.errors -%}
+                    <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">
+                      {%- for error in form.errors -%}
+                        <span>{{ error }}</span>
+                      {%- endfor -%}
+                    </small>
+                  {%- endif -%}
+                </div>
+                <button type="submit" class="newsletter-form__button button" name="commit">
+                  {{ section.settings.button_label | escape }}
+                </button>
+                {%- if form.posted_successfully? -%}
+                  <h3 class="newsletter-form__message newsletter-form__message--success" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>
+                    {{ section.settings.success_text | escape }}
+                  </h3>
+                {%- endif -%}
+              {% endform %}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.getElementById('Newsletter-{{ section.id }}');
+    if (!section) return;
+    
+    // Apply additional styles directly to the input field
+    const inputField = section.querySelector('.field__input');
+    if (inputField) {
+      const styles = {
+        backgroundColor: getComputedStyle(section).getPropertyValue('--newsletter-bg-color') || 'transparent',
+        color: getComputedStyle(section).getPropertyValue('--newsletter-text-color') || 'inherit',
+        borderColor: getComputedStyle(section).getPropertyValue('--newsletter-border-color') || '#d9d9d9',
+        borderWidth: getComputedStyle(section).getPropertyValue('--newsletter-border-width') || '1px',
+        borderRadius: getComputedStyle(section).getPropertyValue('--newsletter-border-radius') || '4px',
+        padding: getComputedStyle(section).getPropertyValue('--newsletter-padding') || '10px',
+        width: '100%',
+        boxSizing: 'border-box'
+      };
+      
+      // Apply styles directly
+      Object.assign(inputField.style, styles);
+      
+      // Apply focus event listener
+      inputField.addEventListener('focus', function() {
+        this.style.outlineColor = getComputedStyle(section).getPropertyValue('--newsletter-focus-color') || '#fff';
+        this.style.borderColor = getComputedStyle(section).getPropertyValue('--newsletter-focus-color') || '#fff';
+      });
+    }
+    
+    // Apply button styles directly as well
+    const button = section.querySelector('.newsletter-form__button');
+    if (button) {
+      const buttonStyles = {
+        backgroundColor: getComputedStyle(section).getPropertyValue('--newsletter-button-bg-color') || 'inherit',
+        color: getComputedStyle(section).getPropertyValue('--newsletter-button-text-color') || 'inherit',
+        borderRadius: getComputedStyle(section).getPropertyValue('--newsletter-button-radius') || '4px',
+        padding: getComputedStyle(section).getPropertyValue('--newsletter-button-padding') || '10px',
+        fontWeight: getComputedStyle(section).getPropertyValue('--newsletter-button-weight') || '600'
+      };
+      
+      Object.assign(button.style, buttonStyles);
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Email signup",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "Full width"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Content width",
+      "default": 800,
+      "info": "Only applies when full width is disabled"
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Content padding",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Horizontal alignment"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center",
+      "label": "Vertical alignment"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "select",
+      "id": "background_position",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "center top",
+          "label": "Top"
+        },
+        {
+          "value": "center bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "left center",
+          "label": "Left"
+        },
+        {
+          "value": "right center",
+          "label": "Right"
+        }
+      ],
+      "default": "center center",
+      "label": "Background position"
+    },
+    {
+      "type": "select",
+      "id": "background_size",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "auto",
+          "label": "Original size"
+        }
+      ],
+      "default": "cover",
+      "label": "Background size"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color"
+    },
+    {
+      "type": "color",
+      "id": "background_overlay_color",
+      "label": "Overlay color"
+    },
+    {
+      "type": "range",
+      "id": "background_overlay_opacity",
+      "min": 0.1,
+      "max": 0.9,
+      "step": 0.1,
+      "label": "Overlay opacity",
+      "default": 0.5
+    },
+    {
+      "type": "color",
+      "id": "content_background",
+      "label": "Content background color"
+    },
+    {
+      "type": "range",
+      "id": "content_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Content border radius",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "content_box_shadow",
+      "label": "Add box shadow to content",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Text Styles"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 36
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600",
+      "label": "Heading weight"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Heading bottom spacing",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_spacing",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Text bottom spacing",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
+      "content": "Form Styles"
+    },
+    {
+      "type": "text",
+      "id": "input_placeholder",
+      "default": "Email address",
+      "label": "Input placeholder"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input background color"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input text color"
+    },
+    {
+      "type": "color",
+      "id": "input_placeholder_color",
+      "label": "Input placeholder color"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border color"
+    },
+    {
+      "type": "range",
+      "id": "input_border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Input border width",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Input border radius",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "input_padding",
+      "min": 5,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Input padding",
+      "default": 10
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Subscribe",
+      "label": "Button label"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background color"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color"
+    },
+    {
+      "type": "select",
+      "id": "button_weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600",
+      "label": "Button weight"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px", 
+      "label": "Button border radius",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "button_padding",
+      "min": 5,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Button padding",
+      "default": 10
+    },
+    {
+      "type": "text",
+      "id": "success_text",
+      "default": "Thanks for subscribing!",
+      "label": "Success message"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.newsletter.blocks.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Subscribe to our newsletter",
+          "label": "t:sections.newsletter.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "t:sections.newsletter.blocks.paragraph.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Be the first to know about new collections and exclusive offers.</p>",
+          "label": "t:sections.newsletter.blocks.paragraph.settings.paragraph.label"
+        }
+      ]
+    },
+    {
+      "type": "email_form",
+      "name": "t:sections.newsletter.blocks.email_form.name",
+      "limit": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.newsletter.presets.name",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "paragraph"
+        },
+        {
+          "type": "email_form"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

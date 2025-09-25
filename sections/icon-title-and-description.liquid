@@ -1,0 +1,355 @@
+{% style %}
+  .{{ section.id }} .iconTextSlider{
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 20px; */
+    padding-inline: 30px;
+  }
+  .{{ section.id }} .flickity-prev-next-button{
+    width:30px;
+    height: 30px;
+    border: 1px solid;
+  }
+  .{{ section.id }} .flickity-prev-next-button.next {
+    right: 0px;
+  }
+  .{{ section.id }} .flickity-prev-next-button.previous {
+    left: 0px;
+  }
+  .{{ section.id }} .iconTextSlider .icon-text-item{
+    /* width: calc((100% / {{ section.settings.slides_desktop }}) - ( (20px * ({{ section.settings.slides_desktop }} - 1) / {{ section.settings.slides_desktop }} ) ) ); */
+    width: calc(100% / {{ section.settings.slides_desktop }});
+    padding-inline: 10px;
+  }
+
+  .{{ section.id }} .iconTextSlider .icon-text-item img{
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+  }
+  .{{ section.id }} .iconTextSlider .icon-text-item .icon-text-title{
+    margin: 0 0 1px;
+    font-weight: 600;
+  }
+  .{{ section.id }} .iconTextSlider .icon-text-item p{
+    margin: 0;
+  }
+  .{{ section.id }} .icon-position-left{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-direction: row;
+    text-align: left;
+  }
+  .{{ section.id }} .icon-position-right{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+  .{{ section.id }} .icon-position-center{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  @media (max-width: 1200px){
+    .{{ section.id }} .iconTextSlider .icon-text-item{
+      /* width: calc((100% / {{ section.settings.slides_tablet }}) - ( (20px * ({{ section.settings.slides_tablet }} - 1) / {{ section.settings.slides_tablet }} ) ) ); */
+      width: calc(100% / {{ section.settings.slides_tablet }}); 
+    }
+  }
+  @media (max-width: 767px){
+    .{{ section.id }} .iconTextSlider .icon-text-item{
+      /* width: calc((100% / {{ section.settings.slides_mobile }}) - ( (20px * ({{ section.settings.slides_mobile }} - 1) / {{ section.settings.slides_mobile }} ) ) ); */
+      width: calc(100% / {{ section.settings.slides_mobile }}); 
+    }
+  }
+  .iconTextSlider {
+    opacity: 0;
+    transition: opacity 1s ease; /* smooth fade-in */
+    overflow: hidden;              /* prevent stacked slides from showing */
+  }
+
+  /* Show the slider when Flickity is ready */
+  .iconTextSlider.flickity-enabled {
+    opacity: 1;
+  }
+{% endstyle %}
+
+
+
+
+<div class="{{ section.id }}" style="background: {{ section.settings.background_color }};">
+  <div class="page-width">
+    <div id="section-icon-text-{{ section.id }}" class="{% if section.settings.enable_slider_mobile %}mobile_slider{% endif %} {% if section.settings.enable_slider_desktop %}desktop_slider{% endif %} icon-text-section index-section" 
+         >
+      <div class="iconTextSlider icon-text-wrapper 
+           {% if section.settings.enable_slider_mobile == false %}remove_mobile_slider{% endif %}
+           {% if section.settings.enable_slider_desktop == false %}remove_desktop_slider{% endif %}"
+           style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+        {% for block in section.blocks %}
+          <div class="icon-text-item  icon-position-{{ section.settings.icon_position }}">
+            {% if block.settings.icon != blank %}
+              {{ block.settings.icon | image_url: width: block.settings.icon.width | image_tag: loading: 'lazy' }}
+            {% endif %}
+          <div class="textWrap">
+            <h3 class="icon-text-title">{{ block.settings.title }}</h3>
+            <div class="icon-text-content">{{ block.settings.content }}</div>
+          </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div> 
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const sectionId = "section-icon-text-{{ section.id }}";
+  const section = document.getElementById(sectionId);
+  if (!section) return;
+
+  const sliderContainer = section.querySelector(".iconTextSlider");
+  let flkty = null; // Store Flickity instance
+
+  function getSlidesToShow() {
+    if (window.innerWidth > 1200 && {{ section.settings.enable_slider_desktop }}) return {{ section.settings.slides_desktop }};
+    if (window.innerWidth > 767) return {{ section.settings.slides_tablet }};
+    return {{ section.settings.slides_mobile }};
+  }
+
+  function initializeFlickity() {
+    if (!sliderContainer) return;
+
+    if ( window.innerWidth > 767 && !{{ section.settings.enable_slider_desktop }}) {
+      if (flkty) {
+        flkty.destroy();
+        flkty = null;
+      }
+      return; // Exit early, don't initialize Flickity
+    }
+    else if (window.innerWidth <= 767 && sliderContainer.classList.contains("remove_mobile_slider")) {
+      if (flkty) {
+        flkty.destroy();
+        flkty = null;
+      }
+      return; // Exit early, don't initialize Flickity
+    }
+
+    if (flkty) {
+      flkty.destroy(); // Destroy previous instance before reinitializing
+      flkty = null;
+    }
+
+    let slidesToShow = getSlidesToShow();
+
+    flkty = new Flickity(sliderContainer, {
+      cellAlign: "left",
+      contain: true,
+      wrapAround: {{ section.settings.wrap_around }},
+      prevNextButtons: {{ section.settings.enable_arrows }},
+      pageDots: {{ section.settings.enable_dots }},
+      autoPlay: {{ section.settings.auto_play }},
+      freeScroll: false,
+      draggable: true,
+      groupCells:slidesToShow
+    });
+
+    let prevButton = sliderContainer.querySelector(".flickity-prev-next-button.flickity-previous");
+    let nextButton = sliderContainer.querySelector(".flickity-prev-next-button.flickity-next");
+
+    function updateArrows() {
+      if (!prevButton || !nextButton) return;
+      prevButton.disabled = flkty.selectedIndex === 0;
+      var slindex = flkty.selectedIndex + 1;
+      nextButton.disabled = slindex = flkty.slides.length;
+    }
+
+    flkty.on("change", () => {
+      updateArrows();
+    });
+
+    updateArrows();
+  }
+
+  let lastWidth = window.innerWidth;
+  window.addEventListener("resize", function () {
+    if (window.innerWidth !== lastWidth) {
+      lastWidth = window.innerWidth;
+      initializeFlickity();
+    }
+  });
+  initializeFlickity(); // Run on page load
+});
+</script>
+
+{% schema %}
+{
+  "name": "Icon with Text",
+  "tag": "section",
+  "class": "section-icon-text",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_slider_mobile",
+      "label": "Enable slider on mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_slider_desktop",
+      "label": "Enable slider on desktop",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom",
+      "default": 20,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "select",
+      "id": "icon_position",
+      "label": "Icon Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "number",
+      "id": "slides_desktop",
+      "label": "Slides on Desktop",
+      "default": 4
+    },
+    {
+      "type": "number",
+      "id": "slides_tablet",
+      "label": "Slides on Tablet",
+      "default": 3
+    },
+    {
+      "type": "number",
+      "id": "slides_mobile",
+      "label": "Slides on Mobile",
+      "default": 2
+    },
+    {
+      "type": "checkbox",
+      "id": "wrap_around",
+      "label": "Enable Wrap Around",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_arrows",
+      "label": "Enable Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_dots",
+      "label": "Enable Dots",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_play",
+      "label": "Enable AutoPlay",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_text",
+      "name": "Icon & Text",
+      "limit": 20,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Feature description goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon with Text",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "icon_text"
+        },
+        {
+          "type": "icon_text"
+        },
+        {
+          "type": "icon_text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

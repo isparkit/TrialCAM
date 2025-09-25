@@ -1,0 +1,160 @@
+{% schema %}
+{
+  "name": "Flickity Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Testimonials"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "options": [
+        { "value": "background-1", "label": "Background 1" },
+        { "value": "background-2", "label": "Background 2" },
+        { "value": "background-3", "label": "Background 3" }
+      ],
+      "default": "background-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content",
+      "name": "Content Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Flickity Slider",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-slider-section {{ section.settings.color_scheme }}" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    <h2 class="section-heading">{{ section.settings.heading }}</h2>
+    <div class="section-description">{{ section.settings.description }}</div>
+
+    <div class="custom-slider flickity-loading" data-flickity>
+      {% for block in section.blocks %}
+        {% if block.type == 'content' %}
+          <div class="custom-slide content-slide alignment-{{ section.settings.alignment }}">
+            {% if block.settings.icon != blank %}
+              <img src="{{ block.settings.icon | img_url: '100x' }}" alt="{{ block.settings.title }} icon" />
+            {% endif %}
+            <h3>{{ block.settings.title }}</h3>
+            <div class="slide-content">{{ block.settings.content }}</div>
+          </div>
+        {% elsif block.type == 'image' %}
+          <div class="custom-slide image-slide alignment-{{ section.settings.alignment }}">
+            <img src="{{ block.settings.image | img_url: '600x' }}" alt="Slide image" />
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.custom-slider.flickity-loading {
+  position: relative;
+  overflow: hidden;
+}
+.custom-slider.flickity-loading .custom-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+}
+.custom-slider.flickity-enabled .custom-slide {
+  position: relative;
+  opacity: 1;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var sliders = document.querySelectorAll('[data-flickity]');
+
+  sliders.forEach(function(slider) {
+    var flkty = new Flickity(slider, {
+      cellAlign: 'left',
+      contain: true,
+      wrapAround: true,
+      pageDots: true,
+      imagesLoaded: true,
+      lazyLoad: 2
+    });
+
+    flkty.on('ready', function() {
+      slider.classList.remove('flickity-loading');
+      slider.classList.add('flickity-enabled');
+    });
+  });
+});
+</script>

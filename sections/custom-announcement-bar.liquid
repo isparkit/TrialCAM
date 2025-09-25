@@ -1,0 +1,431 @@
+{{ 'custom-announcement-bar.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-announcement-bar.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .custom-announcement-section {
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+    /* padding: 0 0.5rem; */
+  }
+   
+  .announcement-block__icon svg {
+    fill: {{ section.settings.icon_color }};
+    color: {{ section.settings.icon_color }};
+  }
+
+  .announcement-block__icon svg path {
+    fill: {{ section.settings.icon_color }};
+    color: {{ section.settings.icon_color }};
+  }
+
+  .slide-control {
+    /* background: {{ section.settings.mobile_icon_background }}; */
+  }
+  
+  .slide-control:hover {
+    /* background: {{ section.settings.mobile_icon_background | color_modify: 'alpha', 0.8 }}; */
+  }
+
+  .slide-control svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: {{ section.settings.text_color }};
+    stroke-width: 2px;
+  }
+  
+  .slide-control svg path {
+    fill: none;
+    stroke: {{ section.settings.text_color }};
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+{%- endstyle -%}
+
+<div class="custom-announcement-section page-width">
+  <custom-announcement-bar 
+    class="custom-announcement 
+    custom-announcement--padding-top-{{ section.settings.padding_top }} 
+    custom-announcement--padding-bottom-{{ section.settings.padding_bottom }}" 
+    data-auto-rotate="{{ section.settings.auto_rotate }}"
+    data-rotate-speed="{{ section.settings.change_slides_speed }}">
+
+    <!-- Desktop: Display all blocks in a row -->
+    <div class="announcement-blocks">
+      {% for block in section.blocks %}
+        {% if forloop.index <= 4 %}
+          <div class="announcement-block announcement-block--padding-horizontal-{{ section.settings.padding_horizontal }}" {{ block.shopify_attributes }}>
+            {% if block.settings.icon_svg != blank %}
+              <div class="announcement-block__icon"> 
+                {{ block.settings.icon_svg }}
+              </div>
+            {% elsif block.settings.icon != blank %}
+              <div class="announcement-block__icon">
+                {% render 'icon', icon: block.settings.icon %}
+              </div>
+            {% endif %}
+            <div class="announcement-block__text">
+              {{ block.settings.text }}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    
+    <!-- Mobile: Display as slideshow -->
+    <div class="slideshow-container" data-autorotate="{{ section.settings.auto_rotate }}" data-interval="{{ section.settings.rotation_interval | times: 1000 }}">
+      {% for block in section.blocks %}
+        <div class="announcement-slide {% if forloop.first %}active{% endif %}" id="announcement-slide-{{ forloop.index0 }}" data-index="{{ forloop.index0 }}" data-block-id="{{ block.id }}">
+          {% render 'announcement-block', block: block, index: forloop.index %}
+        </div>
+      {% endfor %}
+
+      {% if section.blocks.size > 1 %}
+        {% if section.settings.show_navigation_arrows %}
+          <button type="button" class="slide-control slide-control--prev" aria-label="Previous announcement">
+            <span class="svg-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </button>
+          
+          <button type="button" class="slide-control slide-control--next" aria-label="Next announcement">
+            <span class="svg-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </button>
+        {% endif %}
+        
+        <!-- Indicators -->
+        <div class="slide-indicators" style="display: none;">
+          {% for block in section.blocks %}
+            <button 
+              type="button" 
+              class="slide-indicator{% if forloop.first %} active{% endif %}" 
+              aria-label="Slide {{ forloop.index }}"
+              data-index="{{ forloop.index0 }}"
+            ></button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    
+  </custom-announcement-bar>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Announcement Bar",
+  "tag": "section",
+  "class": "section custom-announcement-section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Padding Settings"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "label": "Top padding",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "padding_horizontal",
+      "label": "Side padding",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Mobile slideshow settings"
+    },
+    {
+      "type": "color",
+      "id": "mobile_icon_background",
+      "label": "Navigation button background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation_arrows",
+      "label": "Show navigation arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate announcements",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Change slides every",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Announcement text here"
+        },
+        {
+          "type": "header",
+          "content": "Icon"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Predefined icon",
+          "options": [
+            {
+              "value": "",
+              "label": "None"
+            },
+            {
+              "value": "truck",
+              "label": "Truck (Shipping)"
+            },
+            {
+              "value": "return",
+              "label": "Return"
+            },
+            {
+              "value": "lock",
+              "label": "Lock (Security)"
+            },
+            {
+              "value": "tick",
+              "label": "Checkmark"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Custom SVG icon",
+          "info": "Paste SVG code to use a custom icon. Takes precedence over predefined icon."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Announcement Bar",
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Shipping On Order Aove 49€",
+            "icon": "truck"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "30 Days Return",
+            "icon": "return"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Delivery 3-5 Days",
+            "icon": "truck"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Customer Services Contact",
+            "icon": "tick"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Slideshow functionality
+  const slideshowContainer = document.querySelector('.slideshow-container');
+  if (!slideshowContainer) return;
+  
+  const slides = slideshowContainer.querySelectorAll('.announcement-slide');
+  const prevButton = slideshowContainer.querySelector('.slide-control--prev');
+  const nextButton = slideshowContainer.querySelector('.slide-control--next');
+  const indicators = slideshowContainer.querySelectorAll('.slide-indicator');
+  
+  if (slides.length <= 1) return;
+  
+  let currentIndex = 0;
+  let intervalId = null;
+  
+  // Function to show a specific slide
+  function showSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    
+    // Hide all slides
+    slides.forEach(slide => slide.classList.remove('active'));
+    
+    // Show the selected slide
+    slides[index].classList.add('active');
+    
+    // Update indicators
+    indicators.forEach((indicator, i) => {
+      indicator.classList.toggle('active', i === index);
+    });
+    
+    currentIndex = index;
+  }
+  
+  // Set up autorotation if enabled
+  function setupAutoRotation() {
+    if (slideshowContainer.dataset.autorotate === 'true') {
+      const interval = parseInt(slideshowContainer.dataset.interval) || 5000;
+      
+      // Clear any existing interval
+      if (intervalId) clearInterval(intervalId);
+      
+      // Set up new interval
+      intervalId = setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, interval);
+    }
+  }
+  
+  // Initialize autorotation
+  setupAutoRotation();
+  
+  // Previous button click
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      showSlide(currentIndex - 1);
+      // Reset autorotation
+      if (intervalId) clearInterval(intervalId);
+      setupAutoRotation();
+    });
+  }
+  
+  // Next button click
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      showSlide(currentIndex + 1);
+      // Reset autorotation
+      if (intervalId) clearInterval(intervalId);
+      setupAutoRotation();
+    });
+  }
+  
+  // Indicator clicks
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      showSlide(index);
+      // Reset autorotation
+      if (intervalId) clearInterval(intervalId);
+      setupAutoRotation();
+    });
+  });
+});
+</script> 

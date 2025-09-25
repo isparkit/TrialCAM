@@ -1,0 +1,41 @@
+{% comment %}
+  Renders an icon from the theme's icon library
+
+  Accepts:
+  - icon: {String} The icon name (without 'icon-' prefix)
+  - class: {String} Optional additional CSS classes to add
+  - style: {String} Optional inline styles
+  - width: {Number} Optional width override
+  - height: {Number} Optional height override
+  
+  Usage:
+  {% render 'icon', icon: 'truck' %}
+{% endcomment %}
+
+{%- if icon != blank -%}
+  <span class="icon-wrapper{% if class %} {{ class }}{% endif %}" {% if style %}style="{{ style }}"{% endif %}>
+    
+    {%- case icon -%}
+      {%- when 'truck' -%}
+       {{ 'icon-truck.svg' | inline_asset_content }}
+      {%- when 'return' -%}
+       {{ 'icon-return.svg' | inline_asset_content }}
+      {%- when 'lock' -%}
+       {{ 'icon-lock.svg' | inline_asset_content }}
+      {%- when 'tick' -%}
+       {{ 'icon-tick.svg' | inline_asset_content }}
+      {%- when 'star' -%}
+       {{ 'icon-star.svg' | inline_asset_content }}
+      {%- else -%}
+        <img 
+          src="{{ 'icon-' | append: icon | append: '.svg' | asset_url }}"
+          alt=""
+          width="{{ width | default: 24 }}"
+          height="{{ height | default: 24 }}"
+          loading="lazy"
+          class="icon icon-{{ icon }}"
+        >
+    {%- endcase -%}
+
+  </span>
+{%- endif -%}
