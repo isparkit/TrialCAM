@@ -25,11 +25,9 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-
-  
 {%- endstyle -%}
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+<footer class="custom-footer footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -154,6 +152,9 @@
                       {%- else -%}
                         {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
                       {%- endif -%}
+                    </div>
+                    <div class="cu-img-text">
+                      <P>brænder vi for at bringe eventyr og teknologi tættere sammen.</P>
                     </div>
                 {%- endcase -%}
               </div>
@@ -298,17 +299,17 @@
           </div>
         {% endif %}
         {% comment %}
-        {%- if section.settings.payment_enable -%}
-          <div class="footer__payment">
-            <ul class="list list-payment" role="list">
-              {%- for type in shop.enabled_payment_types -%}
-                <li class="list-payment__item">
-                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                </li>
-              {%- endfor -%}
-            </ul>
-          </div>
-        {%- endif -%}
+          {%- if section.settings.payment_enable -%}
+            <div class="footer__payment">
+              <ul class="list list-payment" role="list">
+                {%- for type in shop.enabled_payment_types -%}
+                  <li class="list-payment__item">
+                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
         {% endcomment %}
       </div>
     </div>
@@ -558,3 +559,12 @@
   }
 }
 {% endschema %}
+
+<style>
+  .custom-footer h2.footer-block__heading.inline-richtext {
+    text-align: center;
+  }
+  ul.footer-block__details-content.list-unstyled {
+    flex-direction: column;
+  }
+</style>

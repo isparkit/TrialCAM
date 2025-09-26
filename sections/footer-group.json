@@ -38,14 +38,29 @@
             "heading": "",
             "menu": "footer"
           }
+        },
+        "text_wePniG": {
+          "type": "text",
+          "settings": {
+            "heading": "Ring til os",
+            "subtext": "<p>+01 1234567891<br/><a href=\"#\" target=\"_blank\" title=\"#\">test@gamil.com</a></p>"
+          }
+        },
+        "brand_information_i9TWBa": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": false
+          }
         }
       },
       "block_order": [
         "image_NExAgL",
-        "link_list_Li6jLV"
+        "link_list_Li6jLV",
+        "text_wePniG",
+        "brand_information_i9TWBa"
       ],
       "settings": {
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-4943d92c-24a4-4590-ac6e-ffc8bcd2117f",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,

@@ -9,6 +9,80 @@
  */
 {
   "sections": {
+    "image_with_text_GQdLiF": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_bmDpNc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Optag Det, Som Ingen Andre Ser",
+            "heading_size": "h1"
+          }
+        },
+        "text_kPCftT": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Hos TrailCam™ brænder vi for at bringe eventyr og teknologi tættere sammen. Vores mission er simpel: at gøre det nemt og sjovt at forevige dine oplevelser – uanset om du vandrer i bjergene, camperer i naturen eller bare vil dokumentere hverdagen fra nye vinkler.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_qzbtyx": {
+          "type": "button",
+          "settings": {
+            "button_label": "KØB NU",
+            "button_link": "#",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_bmDpNc",
+        "text_kPCftT",
+        "button_qzbtyx"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "media_type": "image",
+        "image": "shopify://shop_images/image_1.png",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "external_video_url": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "container_radius": 0,
+        "image_radius": 0,
+        "image_behavior": "none",
+        "show_social_links": false,
+        "facebook_url": "",
+        "instagram_url": "",
+        "twitter_url": "",
+        "social_position": "flex-start",
+        "social_icon_size": 24,
+        "social_icon_color": "#000000",
+        "custom_font": "",
+        "custom_font_size": 36,
+        "custom_font_weight": "400",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "background_color": "",
+        "text_color": "",
+        "section_color_scheme": "scheme-4943d92c-24a4-4590-ac6e-ffc8bcd2117f",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36,
+        "enable_video_autoplay": false,
+        "enable_video_loop": false,
+        "enable_video_muted": true,
+        "show_divider": true,
+        "divider_color": "#dddddd",
+        "divider_spacing": 10,
+        "divider_offset": 0
+      }
+    },
     "slideshow_YhH3T7": {
       "type": "slideshow",
       "blocks": {
@@ -35,6 +109,7 @@
       "block_order": [
         "slide_ierhKM"
       ],
+      "disabled": true,
       "name": "t:sections.slideshow.presets.name",
       "settings": {
         "tp_image": "shopify://shop_images/image_6.png",
@@ -513,6 +588,7 @@
     }
   },
   "order": [
+    "image_with_text_GQdLiF",
     "slideshow_YhH3T7",
     "icon_title_and_description_N4jf4R",
     "image_with_text_WtKVDV",
