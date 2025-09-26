@@ -1,0 +1,169 @@
+
+
+<div class="tabs-wrapper page-width tabs-wrapper-{{ section.id }}">
+  <ul class="tabs-nav tabs-nav-{{ section.id }}">
+    {% assign tab_index = 0 %}
+
+    {%- if product.description != blank -%}
+      <li class="dptab tab-link tab-link-{{ section.id }} active" data-tab="tab-0-{{ section.id }}">
+        {{ 'products.product.description' | t }}
+      </li>
+      {% assign tab_index = tab_index | plus: 1 %}
+    {%- endif -%}
+
+    {% for block in section.blocks %}
+      {% if block.settings.tab_title != blank and block.settings.tab_content != blank %}
+        <li class="tab-link tab-link-{{ section.id }} {% if product.description == blank and tab_index == 0 %}active{% endif %}" data-tab="tab-{{ tab_index }}-{{ section.id }}">
+          {{ block.settings.tab_title }}
+        </li>
+        {% assign tab_index = tab_index | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <div class="tabs-content tabs-content-{{ section.id }}">
+    {%- if product.description != blank -%}
+      <div id="tab-0-{{ section.id }}" class="tab-content tab-content-{{ section.id }} active">
+        {{ product.description }}
+      </div>
+    {%- endif -%}
+
+    {% assign tab_index = 0 %}
+    {% if product.description != blank %}
+      {% assign tab_index = tab_index | plus: 1 %}
+    {% endif %}
+
+    {% for block in section.blocks %}
+      {% if block.settings.tab_title != blank and block.settings.tab_content != blank %}
+        <div id="tab-{{ tab_index }}-{{ section.id }}" class="tab-content tab-content-{{ section.id }} {% if product.description == blank and tab_index == 0 %}active{% endif %}">
+          {{ block.settings.tab_content }}
+        </div>
+        {% assign tab_index = tab_index | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.tabs-wrapper {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+.tabs-nav {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ccc;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+.tab-link {
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  /* background: #f7f7f7; */
+  border: 1px solid #ddd;
+  border-bottom: none;
+}
+.tab-link.active {
+  /* background: #fff; */
+  border-top: 2px solid #000;
+  font-weight: bold;
+}
+.tabs-content {
+  border: 1px solid #ddd;
+  padding: 20px;
+  background: #fff;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+.tabs-wrapper-{{ section.id }} .tabs-content ul{
+  padding-left: 16px;
+} 
+.tabs-wrapper-{{ section.id }} .tabs-content {
+  border: 0;
+  padding: 0;
+  background: none;
+}
+.tabs-wrapper-{{ section.id }} .tabs-content a{
+  color: inherit;
+}
+.tabs-wrapper-{{ section.id }} .tabs-nav{
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.tabs-wrapper-{{ section.id }} .tab-link {
+  padding: 6px 0;
+  cursor: pointer;
+  margin-right: 25px;
+  background: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-width: 0 0 2px 0;
+  margin-bottom: -1px;
+  white-space: nowrap; 
+}
+.tabs-wrapper-{{ section.id }} .tab-link.active {
+  /* background: #fff; */
+  border-bottom: 2px solid Currentcolor !important;
+  font-weight: bold;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sectionId = '{{ section.id }}';
+  const tabLinks = document.querySelectorAll('.tab-link-' + sectionId);
+  const tabContents = document.querySelectorAll('.tab-content-' + sectionId);
+
+  tabLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const tabId = this.getAttribute('data-tab');
+
+      tabLinks.forEach(l => l.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+
+      this.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+});
+</script>
+{% schema %}
+{
+  "name": "Tabs",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Tab"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_content",
+          "label": "Tab Content",
+          "default": "<p>Content for this tab.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabs"
+    }
+  ]
+}
+{% endschema %}
+

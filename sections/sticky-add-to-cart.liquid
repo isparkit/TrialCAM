@@ -1,0 +1,195 @@
+{% schema %}
+{
+  "name": "Sticky Add to Cart",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "Enable Sticky Add to Cart",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Make Full Width",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Add to cart"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sticky Add to Cart"
+    }
+  ]
+}
+{% endschema %}
+
+{% if section.settings.enable_sticky and product.available %}
+<style>
+.sticky-add-to-cart {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  background: rgba(var(--color-background), 1);
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  z-index: 9999;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+.sticky-add-to-cart.alignment-right{
+  left: auto;
+  right: 0;
+}
+.sticky-add-to-cart.full-width{
+  width: 100%;
+  border-radius: 0px;
+}
+
+.sticky-add-to-cart.active {
+  transform: translateY(0);
+}
+
+.sticky-add-to-cart .product-info {
+  display: flex;
+  align-items: center;
+}
+
+.sticky-add-to-cart img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 0.75rem;
+}
+
+.sticky-add-to-cart .product-text {
+  display: flex;
+  flex-direction: column;
+  padding-right: 10px;
+}
+
+.sticky-add-to-cart .product-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sticky-add-to-cart .product-price {
+  font-size: 14px;
+}
+
+.sticky-add-to-cart .saving-percent {
+  font-size: 12px;
+  color: #d50000;
+}
+
+.sticky-add-to-cart button {
+  /* background: var(--color-button); */
+  /* color: var(--color-button-text); */
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 0;
+  border-radius: 4px;
+}
+
+@media (max-width: 767px){
+  .sticky-add-to-cart img{
+    display: none;
+  }
+  .sticky-add-to-cart{
+    border-radius: 0;
+    width: 100%;
+  }
+}
+
+
+body:has(cart-drawer.active) .sticky-add-to-cart, body:has(.menu-drawer-container.menu-opening) .sticky-add-to-cart{
+  display: none;
+}
+body:has(details-modal details[open="true"]) .sticky-add-to-cart{
+  display: none;
+}
+  
+</style>
+
+<div id="StickyAddToCart" class="sticky-add-to-cart color-scheme-1 alignment-{{ section.settings.alignment }} {% if section.settings.full_width %} full-width {% endif %}">
+  <div class="product-info">
+    {{ product.featured_image | image_url: width: product.featured_image.width | image_tag: loading: 'lazy' }}
+
+    <div class="product-text">
+      <span class="product-title">{{ product.title }}</span>
+      <span class="product-price">
+        {% if product.compare_at_price > product.price %}
+          <span class="old-price" style="text-decoration: line-through; color: #888;">
+            {{ product.compare_at_price | money }}
+          </span>
+          <span class="current-price">{{ product.price | money }}</span>
+        {% else %}
+          <span class="current-price">{{ product.price | money }}</span>
+        {% endif %}
+      </span>
+      {% if product.compare_at_price > product.price %}
+        <span class="saving-percent">
+        </span>
+      {% endif %}
+    </div>
+  </div>
+  <button type="button" class="button button--primary" id="StickyCartButton">{{ section.settings.button_text }}</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const stickyBar = document.getElementById('StickyAddToCart');
+  const stickyButton = document.getElementById('StickyCartButton');
+  const mainFormButton = document.querySelector('form[action^="/cart/add"] [type="submit"]');
+
+  if (!stickyBar || !mainFormButton) return;
+
+  // Observer to show/hide sticky bar
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        stickyBar.classList.add('active');
+      } else {
+        stickyBar.classList.remove('active');
+      }
+    });
+  }, { threshold: 0 });
+
+  observer.observe(mainFormButton);
+
+  // Trigger main Add to Cart on sticky button click
+  stickyButton.addEventListener('click', function() {
+    mainFormButton.click();
+  });
+});
+</script>
+{% endif %}

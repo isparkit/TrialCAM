@@ -1,0 +1,22 @@
+{% comment %}
+  Renders a single announcement block
+
+  Accepts:
+  - block: {Object} The block object containing settings
+  - index: {Number} The block index
+{% endcomment %}
+
+<div class="announcement-block" {{ block.shopify_attributes }}>
+  {% if block.settings.icon_svg != blank %}
+    <div class="announcement-block__icon">
+      {{ block.settings.icon_svg }}
+    </div>
+  {% elsif block.settings.icon != blank %}
+    <div class="announcement-block__icon">
+      {% render 'icon', icon: block.settings.icon %}
+    </div>
+  {% endif %}
+  <div class="announcement-block__text">
+    {{ block.settings.text }}
+  </div>
+</div> 

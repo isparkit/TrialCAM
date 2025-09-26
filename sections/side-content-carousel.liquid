@@ -1,0 +1,1071 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 1 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 1 | round: 0 }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+  
+  #SideContentCarousel-{{ section.id }} .side-content__badge {
+    background-color: {{ section.settings.badge_background_color }};
+  }
+   
+  #SideContentCarousel-{{ section.id }} .side-content__heading {
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: {{ section.settings.heading_weight }};
+    font-style: {{ section.settings.heading_style }};
+    margin: 20px 0;
+  }
+  
+  #SideContentCarousel-{{ section.id }} .side-content__description {
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.text_size }}px;
+  }
+  
+  #SideContentCarousel-{{ section.id }} .side-content__carousel-item-title {
+    color: {{ section.settings.item_title_color }};
+    font-size: {{ section.settings.item_title_size }}px;
+    margin: 0 0 10px;
+  }
+  
+  #SideContentCarousel-{{ section.id }} .side-content__carousel-item-text {
+    color: {{ section.settings.item_text_color }};
+    font-size: {{ section.settings.item_text_size }}px;
+  }
+  
+  #SideContentCarousel-{{ section.id }} .side-content__carousel-item-number {
+    color: {{ section.settings.item_number_color }};
+    opacity: {{ section.settings.item_number_opacity }};
+  }
+  
+  #SideContentCarousel-{{ section.id }} .carousel-control {
+    background-color: {{ section.settings.control_background_color }};
+    color: {{ section.settings.control_color }};
+  }
+  
+  {% if section.settings.background_color != blank %}
+  #SideContentCarousel-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+  }
+  {% endif %}
+  
+  {% if section.settings.carousel_item_background != blank %}
+  #SideContentCarousel-{{ section.id }} .side-content__carousel-item {
+    background-color: {{ section.settings.carousel_item_background }};
+  }
+  {% endif %}
+
+  #SideContentCarousel-{{ section.id }} .side-content__carousel-item.side-content__carousel-item--multiple {
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    flex-shrink: 0;
+  }
+
+  #SideContentCarousel-{{ section.id }} .side-content__carousel-item-number--bottom {
+    position: relative;
+    top: auto;
+    right: auto;
+    font-size: {{ section.settings.number_size }}px;
+    margin-right: 15px;
+    line-height: 1;
+  }
+
+  #SideContentCarousel-{{ section.id }} .side-content__carousel-item-bottom-content {
+    display: flex;
+    /* align-items: center; */
+    margin-top: 15px;
+  }
+
+  #SideContentCarousel-{{ section.id }} .side-content__carousel-item-text--beside-number {
+    flex: 1;
+  }
+
+  #SideContentCarousel-{{ section.id }} p{
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  #SideContentCarousel-{{ section.id }} .side-content__badge-icon {
+    width: {{ section.settings.badge_size | times: 1 }}px;
+    height: {{ section.settings.badge_size | times: 1 }}px;
+  }
+
+  #SideContentCarousel-{{ section.id }} .side-content__badge-container{
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Fix for column layout - prevent overlap */
+  .side-content__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 50px;
+    align-items: start;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .side-content__container {
+      grid-template-columns: minmax(250px, 1fr) 2fr;
+    }
+  }
+  
+  /* Keep carousel inside right column */
+  .side-content__right {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .side-content__right slider-component{
+    /* width: calc(100% + 20px); */
+    width: 100%;
+  }
+  
+  /* Fix image sizes in both columns */
+  .side-content__image {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .side-content__carousel-item-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: {{ section.settings.image_border_radius }}px;
+    aspect-ratio: 0.7;
+  }
+  
+  .side-content__carousel-item-image-container {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  /* Ensure carousel items flex correctly */
+  .side-content__carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition: transform 0.5s ease;
+    width: 100%;
+  }
+  
+  .side-content__carousel-item {
+    flex: 0 0 auto;
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+  
+  .side-content__carousel-item.side-content__carousel-item--multiple {
+    flex: 0 0 auto;
+  }
+  
+  .side-content__carousel-item-inner {
+    padding: 0px;
+    height: 100%;
+    border-radius: 8px;
+  }
+  
+  /* Navigation controls styling */
+  .slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 15px;
+    z-index: 5;
+    position: relative;
+  }
+  
+  .carousel-control {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: {{ section.settings.control_background_color }};
+    color: {{ section.settings.control_color }};
+    transition: opacity 0.3s ease;
+  }
+  
+  .carousel-control.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  .carousel-dots {
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+  }
+  
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  .carousel-dot.active {
+    background-color: {{ section.settings.control_color }};
+  }
+  
+  /* Mobile styles */
+  @media screen and (max-width: 749px) {
+    .side-content__carousel-item.side-content__carousel-item--multiple {
+      width: 100% !important;
+    }
+    
+    .side-content__heading {
+      text-align: center;
+    }
+    
+    .side-content__description {
+      text-align: center;
+    }
+    
+    .side-content__badge-container {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .side-content__image-container {
+      margin: 20px auto;
+    }
+  }
+  
+  /* Ensure carousel controls work correctly */
+  .slider-button--prev .icon {
+    transform: rotate(90deg);
+  }
+  
+  .slider-button--next .icon {
+    transform: rotate(270deg);
+  }
+  
+  .slider-button {
+    color: {{ section.settings.control_color }};
+    background-color: {{ section.settings.control_background_color }};
+  }
+  
+  .slider-button:disabled {
+    opacity: 0.4;
+  }
+
+  /* Full width container */
+  .full-width-container {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Full width layout padding adjustments */
+  @media screen and (max-width: 749px) {
+    .full-width-container .side-content__container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    #SideContentCarousel-{{ section.id }} .side-content__heading {
+      font-size:calc({{ section.settings.heading_size }}px * 0.7);
+    }
+    #SideContentCarousel-{{ section.id }} .side-content__badge-container{
+      margin-top: -40px;
+    }
+    .side-content__carousel {
+      gap: 0;
+    }
+  }
+  
+  @media screen and (min-width: 750px) {
+    .full-width-container .side-content__container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="side-content-carousel color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding" 
+     id="SideContentCarousel-{{ section.id }}"
+>
+  <div class="{% if section.settings.full_width %}full-width-container{% else %}page-width{% endif %}">
+    <div class="side-content__container">
+      
+      <!-- Left column: Fixed content -->
+      <div class="side-content__left">
+        {% if section.settings.show_badge %}
+          <div class="side-content__badge-container">
+            <div class="side-content__badge" style="width: {{ section.settings.badge_size }}px; height: {{ section.settings.badge_size }}px;">
+              {% if section.settings.badge_icon != blank %}
+                {{ section.settings.badge_icon | image_url: width: section.settings.badge_size | image_tag: loading: 'lazy', class: 'side-content__badge-icon' }}
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+        
+        <div class="side-content__text-container">
+          {% if section.settings.heading != blank %}
+            <h2 class="side-content__heading">{{ section.settings.heading }}</h2>
+          {% endif %}
+        </div>
+        
+        {% if section.settings.main_image != blank %}
+          <div class="side-content__image-container">
+            {{ section.settings.main_image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'side-content__image', height: 300, sizes: '(min-width: 750px) 300px, 200px' }}
+          </div>
+        {% endif %}
+        
+        {% if section.settings.description != blank %}
+          <div class="side-content__description">{{ section.settings.description }}</div>
+        {% endif %}
+      </div>
+      
+      <!-- Right column: Carousel -->
+      <div class="side-content__right">
+        <slider-component class="slider-mobile-gutter">
+          <ul class="side-content__carousel" 
+              id="Slider-{{ section.id }}" 
+              role="list"
+              data-autoplay="{{ section.settings.auto_rotate }}"
+              data-speed="{{ section.settings.rotate_speed }}"
+              data-items-per-view="{{ section.settings.items_per_view }}"
+              data-number-position="{{ section.settings.number_position }}"
+          >
+            {%- assign items_per_view_num = section.settings.items_per_view | plus: 0 -%}
+            {%- for block in section.blocks -%}
+              <li id="Slide-{{ section.id }}-{{ forloop.index }}" 
+                  class="side-content__carousel-item{% if items_per_view_num > 1 %} side-content__carousel-item--multiple{% endif %}" 
+                  {{ block.shopify_attributes }}
+                  {% if items_per_view_num > 1 %}
+                    style="width: calc({{ 100 | divided_by: items_per_view_num }}% - {{ 20 }}px);"
+                  {% endif %}
+              >
+                <div class="side-content__carousel-item-inner">
+                  {% if section.settings.number_position == 'top' %}
+                    <div class="side-content__carousel-item-number">{{ forloop.index | prepend: '0' }}</div>
+                  {% endif %}
+                  
+                  {% if block.settings.title != blank %}
+                    <h3 class="side-content__carousel-item-title">{{ block.settings.title }}</h3>
+                  {% endif %}
+                  
+                  {% if block.settings.image != blank %}
+                    <div class="side-content__carousel-item-image-container">
+                      {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'side-content__carousel-item-image', height: 200, sizes: '(min-width: 750px) 400px, 100vw' }}
+                    </div>
+                  {% endif %}
+                  
+                  {% if section.settings.number_position == 'bottom' %}
+                    <div class="side-content__carousel-item-bottom-content">
+                      <div class="side-content__carousel-item-number side-content__carousel-item-number--bottom">{{ forloop.index | prepend: '0' }}</div>
+                      {% if block.settings.text != blank %}
+                        <div class="side-content__carousel-item-text side-content__carousel-item-text--beside-number">{{ block.settings.text }}</div>
+                      {% endif %}
+                    </div>
+                  {% elsif block.settings.text != blank %}
+                    <div class="side-content__carousel-item-text">{{ block.settings.text }}</div>
+                  {% endif %}
+                </div>
+              </li>
+            {%- endfor -%}
+          </ul>
+          
+          {%- if section.blocks.size > 1 -%}
+            {%- if section.settings.show_navigation -%}
+            <div class="slider-controls">
+              {%- if section.settings.show_arrows -%}
+              <button type="button" 
+                      class="slider-button slider-button--prev" 
+                      name="previous" 
+                      aria-label="{{ 'general.slider.previous_slide' | t }}"
+              >
+                <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+                </svg>
+              </button>
+              {%- endif -%}
+              
+              {%- if section.settings.show_dots -%}
+              <div class="slider-counter slider-counter--dots">
+                {%- assign items_per_view = section.settings.items_per_view | plus: 0 -%}
+                {%- assign total_dots = section.blocks.size -%}
+                
+                {% if items_per_view > 1 %}
+                  {%- assign total_dots = section.blocks.size | minus: items_per_view | plus: 1 -%}
+                  {% if total_dots < 1 %}{% assign total_dots = 1 %}{% endif %}
+                {% endif %}
+                
+                {%- for i in (1..total_dots) -%}
+                  <a href="#Slide-{{ section.id }}-{{ forloop.index }}" 
+                    class="slider-counter__link slider-counter__link--dots{% if forloop.first %} slider-counter__link--active{% endif %}"
+                    aria-label="{{ 'general.slider.go_to_slide' | t: number: forloop.index }}"
+                    aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+                  >
+                    <div class="dot"></div>
+                  </a>
+                {%- endfor -%}
+              </div>
+              {%- endif -%}
+              
+              {%- if section.settings.show_arrows -%}
+              <button type="button" 
+                      class="slider-button slider-button--next" 
+                      name="next" 
+                      aria-label="{{ 'general.slider.next_slide' | t }}"
+              >
+                <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+                </svg>
+              </button>
+              {%- endif -%}
+            </div>
+            {%- endif -%}
+          {%- endif -%}
+        </slider-component>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get all carousel components on the page
+    const carousels = document.querySelectorAll('.side-content__carousel');
+    
+    carousels.forEach(carousel => {
+      // Get proper elements for THIS carousel
+      const slides = carousel.querySelectorAll('.side-content__carousel-item');
+      const section = carousel.closest('.side-content-carousel');
+      const prevButton = section.querySelector('.slider-button--prev');
+      const nextButton = section.querySelector('.slider-button--next');
+      
+      if (!slides.length) return; // Skip if no slides
+      
+      let currentIndex = 0;
+      let itemsPerView = parseInt(carousel.getAttribute('data-items-per-view') || 1);
+      let autoRotateInterval = null;
+      const autoRotate = carousel.getAttribute('data-autoplay') === 'true';
+      const autoRotateSpeed = parseInt(carousel.getAttribute('data-speed') || 5000) * 1000; // Convert to milliseconds
+      
+      console.log('Carousel initialized:', {
+        autoRotate,
+        autoRotateSpeed,
+        itemsPerView,
+        slidesCount: slides.length
+      });
+      
+      // Adjust items per view on mobile
+      function updateItemsPerView() {
+        if (window.innerWidth < 750) {
+          itemsPerView = 1;
+        } else {
+          itemsPerView = parseInt(carousel.getAttribute('data-items-per-view') || 1);
+        }
+        updateCarousel();
+      }
+      
+      // Update carousel position and states
+      function updateCarousel() {
+        // Move the slides by changing their transform
+        carousel.style.transform = `translateX(-${currentIndex * (100 / itemsPerView)}%)`;
+        
+        // Update dots
+        const dotLinks = section.querySelectorAll('.slider-counter__link');
+        dotLinks.forEach((dotLink, index) => {
+          dotLink.classList.toggle('slider-counter__link--active', index === currentIndex);
+          dotLink.setAttribute('aria-current', index === currentIndex ? 'true' : 'false');
+        });
+        
+        // Update button states
+        if (prevButton) {
+          prevButton.disabled = currentIndex === 0;
+          prevButton.classList.toggle('disabled', currentIndex === 0);
+        }
+        
+        if (nextButton) {
+          const maxIndex = Math.max(0, slides.length - itemsPerView);
+          nextButton.disabled = currentIndex >= maxIndex;
+          nextButton.classList.toggle('disabled', currentIndex >= maxIndex);
+        }
+      }
+      
+      // Auto-rotate function
+      function startAutoRotate() {
+        if (!autoRotate || slides.length <= itemsPerView) return;
+        
+        stopAutoRotate(); // Clear any existing interval
+        
+        autoRotateInterval = setInterval(() => {
+          const maxIndex = Math.max(0, slides.length - itemsPerView);
+          
+          if (currentIndex < maxIndex) {
+            currentIndex++;
+          } else {
+            currentIndex = 0; // Loop back to beginning
+          }
+          
+          updateCarousel();
+        }, autoRotateSpeed);
+      }
+      
+      // Stop auto-rotation
+      function stopAutoRotate() {
+        if (autoRotateInterval) {
+          clearInterval(autoRotateInterval);
+          autoRotateInterval = null;
+        }
+      }
+      
+      // Add touch swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      const swipeThreshold = 50; // Minimum distance to register as a swipe
+      
+      carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoRotate(); // Pause auto-rotation on touch
+      }, { passive: true });
+      
+      carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const swipeDistance = touchEndX - touchStartX;
+        
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+          if (swipeDistance > 0) {
+            // Swipe right - go to previous
+            if (currentIndex > 0) {
+              currentIndex--;
+              updateCarousel();
+            }
+          } else {
+            // Swipe left - go to next
+            const maxIndex = Math.max(0, slides.length - itemsPerView);
+            if (currentIndex < maxIndex) {
+              currentIndex++;
+              updateCarousel();
+            }
+          }
+        }
+        
+        if (autoRotate) {
+          startAutoRotate(); // Resume auto-rotation after interaction
+        }
+      }, { passive: true });
+      
+      // Handle previous button click
+      if (prevButton) {
+        prevButton.addEventListener('click', function() {
+          stopAutoRotate(); // Pause auto-rotation on interaction
+          
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+          }
+          
+          if (autoRotate) {
+            startAutoRotate(); // Resume auto-rotation after interaction
+          }
+        });
+      }
+      
+      // Handle next button click
+      if (nextButton) {
+        nextButton.addEventListener('click', function() {
+          stopAutoRotate(); // Pause auto-rotation on interaction
+          
+          const maxIndex = Math.max(0, slides.length - itemsPerView);
+          if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateCarousel();
+          }
+          
+          if (autoRotate) {
+            startAutoRotate(); // Resume auto-rotation after interaction
+          }
+        });
+      }
+      
+      // Handle dot navigation
+      const dotLinks = section.querySelectorAll('.slider-counter__link');
+      dotLinks.forEach((dotLink, index) => {
+        dotLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          stopAutoRotate(); // Pause auto-rotation on interaction
+          
+          currentIndex = index;
+          updateCarousel();
+          
+          if (autoRotate) {
+            startAutoRotate(); // Resume auto-rotation after interaction
+          }
+          
+          return false;
+        });
+      });
+      
+      // Pause auto-rotation when hovering over the carousel
+      if (autoRotate) {
+        section.addEventListener('mouseenter', stopAutoRotate);
+        section.addEventListener('mouseleave', startAutoRotate);
+      }
+      
+      // Handle window resize events with debounce
+      let resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateItemsPerView, 250);
+      });
+      
+      // Initial setup
+      updateItemsPerView();
+      
+      // Start auto-rotation after a short delay to ensure everything is loaded
+      if (autoRotate) {
+        setTimeout(startAutoRotate, 800);
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Side Content Carousel",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Left Column Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Vores Mest Populære Produkter"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit cursus imperdiet ementum Quam aliquam.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main image"
+    },
+    {
+      "type": "header",
+      "content": "Badge Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show badge",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_icon",
+      "label": "Badge icon"
+    },
+    {
+      "type": "range",
+      "id": "badge_size",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Badge size",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Carousel Settings"
+    },
+    {
+      "type": "select",
+      "id": "items_per_view",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 item"
+        },
+        {
+          "value": "2",
+          "label": "2 items"
+        },
+        {
+          "value": "3",
+          "label": "3 items"
+        }
+      ],
+      "default": "1",
+      "label": "Items per view"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 8
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show navigation controls",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show arrow buttons",
+      "default": true,
+      "info": "Only visible when 'Show navigation controls' is enabled"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show dot indicators",
+      "default": true,
+      "info": "Only visible when 'Show navigation controls' is enabled"
+    },
+    {
+      "type": "select",
+      "id": "number_position",
+      "options": [
+        {
+          "value": "top",
+          "label": "Above image"
+        },
+        {
+          "value": "bottom",
+          "label": "Below image"
+        }
+      ],
+      "default": "top",
+      "label": "Number position"
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Number size",
+      "default": 60
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "rotate_speed",
+      "min": 3,
+      "max": 9,
+      "step": 1,
+      "unit": "s",
+      "label": "Change slides every",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "options": [
+        {
+          "value": "100",
+          "label": "Extra Light"
+        },
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "select",
+      "id": "heading_style",
+      "label": "Heading style",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "italic",
+          "label": "Italic"
+        }
+      ],
+      "default": "italic"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_title_size",
+      "min": 16,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Item title size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "item_text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Item text size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "badge_background_color",
+      "label": "Badge background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "item_title_color",
+      "label": "Item title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "item_text_color",
+      "label": "Item text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "item_number_color",
+      "label": "Item number color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "range",
+      "id": "item_number_opacity",
+      "min": 0.1,
+      "max": 1.0,
+      "step": 0.1,
+      "label": "Item number opacity",
+      "default": 0.3
+    },
+    {
+      "type": "color",
+      "id": "carousel_item_background",
+      "label": "Carousel item background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "control_background_color",
+      "label": "Control background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "control_color",
+      "label": "Control icon color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Padding Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 40
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width container",
+      "info": "Makes the section span the full width of the screen for a more impactful presentation",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Carousel Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Lorem Ipsum"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet sed id elementum. Quam vel aliquam sit vulputate.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Side Content Carousel",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 

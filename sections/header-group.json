@@ -1,0 +1,178 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "custom_announcement_bar_FBN7TJ": {
+      "type": "custom-announcement-bar",
+      "blocks": {
+        "announcement_7Bj46z": {
+          "type": "announcement",
+          "settings": {
+            "text": "Gratis fragt over 399kr",
+            "icon": "truck",
+            "icon_svg": ""
+          }
+        },
+        "announcement_XNHftk": {
+          "type": "announcement",
+          "settings": {
+            "text": "30 Dages returret",
+            "icon": "return",
+            "icon_svg": ""
+          }
+        },
+        "announcement_itFc8c": {
+          "type": "announcement",
+          "settings": {
+            "text": "Levering 1-3 dage",
+            "icon": "truck",
+            "icon_svg": ""
+          }
+        },
+        "announcement_cexaGg": {
+          "type": "announcement",
+          "settings": {
+            "text": "1000+ Tilfredse kunder",
+            "icon": "star",
+            "icon_svg": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_7Bj46z",
+        "announcement_XNHftk",
+        "announcement_itFc8c",
+        "announcement_cexaGg"
+      ],
+      "settings": {
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "icon_color": "#f3f3f3",
+        "padding_top": "none",
+        "padding_bottom": "none",
+        "padding_horizontal": "medium",
+        "mobile_icon_background": "#ffffff",
+        "show_navigation_arrows": true,
+        "auto_rotate": true,
+        "change_slides_speed": 5
+      }
+    },
+    "custom_announcement_bar_UJUjfr": {
+      "type": "custom-announcement-bar",
+      "blocks": {
+        "announcement_RBkwjp": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Free Shipping On Order Aove 49€",
+            "icon": "truck",
+            "icon_svg": ""
+          }
+        },
+        "announcement_p3hPXL": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "30 Days Return",
+            "icon": "return",
+            "icon_svg": ""
+          }
+        },
+        "announcement_k7GUKc": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Delivery 3-5 Days",
+            "icon": "truck",
+            "icon_svg": ""
+          }
+        },
+        "announcement_Yw8R7p": {
+          "type": "announcement",
+          "settings": {
+            "text": "Lokalt på Sjælland, Jylland & Øerne – Altid hurtig levering og support!",
+            "icon": "tick",
+            "icon_svg": "<a title=\"Madden and others, Public domain, via Wikimedia Commons\" href=\"https://commons.wikimedia.org/wiki/File:Flag_of_Denmark.svg\"><img width=\"20\" alt=\"Flag of Denmark\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Flag_of_Denmark.svg/25px-Flag_of_Denmark.svg.png?20230220190747\"></a>"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_RBkwjp",
+        "announcement_p3hPXL",
+        "announcement_k7GUKc",
+        "announcement_Yw8R7p"
+      ],
+      "name": "Custom Announcement Bar",
+      "settings": {
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "icon_color": "#ffffff",
+        "padding_top": "none",
+        "padding_bottom": "none",
+        "padding_horizontal": "medium",
+        "mobile_icon_background": "#ffffff",
+        "show_navigation_arrows": true,
+        "auto_rotate": true,
+        "change_slides_speed": 5
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-left",
+        "mobile_logo_position": "center",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "enable_language_selector": true,
+        "enable_customer_avatar": true,
+        "margin_bottom": 0,
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "background_color": "#ffffff",
+        "text_color": "#000000"
+      }
+    },
+    "17583071798c6b5d23": {
+      "type": "apps",
+      "blocks": {
+        "kwik_booster_kwik_booster_gcCpMJ": {
+          "type": "shopify://apps/kwik-booster/blocks/kwik-booster/fc61c79e-84cc-43aa-96d7-3c14109f275c",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "kwik_booster_kwik_booster_gcCpMJ"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "17583074201144eb3f": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "custom_announcement_bar_FBN7TJ",
+    "custom_announcement_bar_UJUjfr",
+    "header",
+    "17583071798c6b5d23",
+    "17583074201144eb3f"
+  ]
+}

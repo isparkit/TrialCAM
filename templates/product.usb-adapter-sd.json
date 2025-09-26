@@ -1,0 +1,657 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "trustpilot_A7CJ4N": {
+          "type": "trustpilot",
+          "settings": {
+            "tp_heading": "Fremragende",
+            "tp_image": "shopify://shop_images/image_6.png",
+            "tp_text": "4.6/5 stjerner",
+            "tp_link": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "sale_point_AqkVL7": {
+          "type": "sale-point",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_1321314664_90180d38-36a8-4118-a2ce-c746457cf1c2.svg",
+            "text": "Understøtter SD og Micro SD"
+          }
+        },
+        "sale_point_Gw7A7h": {
+          "type": "sale-point",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_1321314664_90180d38-36a8-4118-a2ce-c746457cf1c2.svg",
+            "text": "Direkte USB-overførsel"
+          }
+        },
+        "sale_point_a9hrie": {
+          "type": "sale-point",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_1321314664_90180d38-36a8-4118-a2ce-c746457cf1c2.svg",
+            "text": "Plug & play funktionalitet"
+          }
+        },
+        "sale_point_emK4UG": {
+          "type": "sale-point",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_1321314664_90180d38-36a8-4118-a2ce-c746457cf1c2.svg",
+            "text": "Kompakt og rejsevenlig"
+          }
+        },
+        "sale_point_yhUzxj": {
+          "type": "sale-point",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_1321314664_90180d38-36a8-4118-a2ce-c746457cf1c2.svg",
+            "text": "Ingen software nødvendig"
+          }
+        },
+        "inventory_GPGH34": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "uppercase",
+            "inventory_threshold": 0,
+            "show_inventory_quantity": false,
+            "delivery_txt": "- Levering 1-3 dage"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "trustpilot_A7CJ4N",
+        "variant_picker",
+        "sale_point_AqkVL7",
+        "sale_point_Gw7A7h",
+        "sale_point_a9hrie",
+        "sale_point_emK4UG",
+        "sale_point_yhUzxj",
+        "inventory_GPGH34",
+        "buy_buttons",
+        "description"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "none",
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top": 36,
+        "padding_bottom": 12,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 16
+      }
+    },
+    "tabs_kHctBt": {
+      "type": "tabs",
+      "blocks": {
+        "tab_jEkXyM": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Produktinformation",
+            "tab_content": "<ul><li><strong>Videoformat:</strong> MP4</li><li><strong>Videokodek:</strong> H.265</li><li><strong>Videoopløsning:</strong> 4K</li><li><strong>Videofrekvens:</strong> 30 fps ± 1 fps</li><li><strong>Vandtæt med etui:</strong> Op til 30 meter</li><li><strong>Billedformat:</strong> JPG</li><li><strong>Produktstørrelse:</strong> 64,5 × 28 × 20 mm</li><li><strong>Billedformatforhold:</strong> 16:9</li><li><strong>Opladningsspænding:</strong> 5V 2A</li><li><strong>Batterikapacitet:</strong> 800 mAh</li><li><strong>Interface-type:</strong> Type-C</li><li><strong>Hukommelse:</strong> TF-kort, maks. 256 GB</li></ul>"
+          }
+        },
+        "tab_Ac9LEj": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Levering",
+            "tab_content": "<p>Når du bestiller TrailCam™, behandler vi din ordre hurtigst muligt. Leveringstiden ligger typisk mellem 1-3 hverdage, afhængig af hvor i landet du bor. Du modtager et trackinglink, så snart pakken er sendt, så du hele tiden kan følge din forsendelse. Alle ordrer sendes med anerkendte fragtfirmaer for at sikre sikker og pålidelig levering.</p>"
+          }
+        },
+        "tab_9LfEU8": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Garanti",
+            "tab_content": "<p>TrailCam™ er dækket af 2 års garanti fra den dag, du modtager den. Det betyder, at hvis der opstår problemer som følge af fabrikationsfejl, reparerer eller ombytter vi produktet uden ekstra omkostninger. Garantien gælder ikke ved skader forårsaget af forkert brug, uheld eller ændringer af produktet.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_jEkXyM",
+        "tab_Ac9LEj",
+        "tab_9LfEU8"
+      ],
+      "name": "Tabs",
+      "settings": {}
+    },
+    "icon_title_and_description_GBrVYc": {
+      "type": "icon-title-and-description",
+      "blocks": {
+        "icon_text_gdex9n": {
+          "type": "icon_text",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group.png",
+            "title": "Hurtig levering",
+            "content": "<p>Gratis fragt på alle ordrer</p>"
+          }
+        },
+        "icon_text_j8PaBJ": {
+          "type": "icon_text",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group1a.png",
+            "title": "Tilfredshedsgaranti",
+            "content": "<p>Prøv risikofrit i 30 dage</p>"
+          }
+        },
+        "icon_text_qwfcEd": {
+          "type": "icon_text",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group1b.png",
+            "title": "Dansk kundeservice",
+            "content": "<p>Vi svarer inden for 24 timer</p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon_text_gdex9n",
+        "icon_text_j8PaBJ",
+        "icon_text_qwfcEd"
+      ],
+      "name": "Icon with Text",
+      "settings": {
+        "enable_slider_mobile": true,
+        "enable_slider_desktop": true,
+        "background_color": "#f4f4f4",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "icon_position": "center",
+        "slides_desktop": 3,
+        "slides_tablet": 2,
+        "slides_mobile": 1,
+        "wrap_around": false,
+        "enable_arrows": true,
+        "enable_dots": false,
+        "auto_play": true
+      }
+    },
+    "image_with_text_RXd6ad": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_aNdeTf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Perfekt til aktive livsstile",
+            "heading_size": "h1"
+          }
+        },
+        "text_QR6bTz": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>TrailCam™</strong> designet til at følge dig uden at være i vejen. Den lette, håndholdte størrelse og trådløse kontrol gør det nemt at fange øjeblikket – helt uden besvær.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_aNdeTf",
+        "text_QR6bTz"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "media_type": "video_file",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "external_video_url": "",
+        "video_file": "shopify://files/videos/Trailcam.dk_produktvideo2_1x1.mov",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "container_radius": 14,
+        "image_radius": 14,
+        "image_behavior": "none",
+        "show_social_links": false,
+        "facebook_url": "",
+        "instagram_url": "",
+        "twitter_url": "",
+        "social_position": "flex-start",
+        "social_icon_size": 24,
+        "social_icon_color": "#000000",
+        "custom_font": "",
+        "custom_font_size": 36,
+        "custom_font_weight": "400",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "background_color": "",
+        "text_color": "",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36,
+        "enable_video_autoplay": true,
+        "enable_video_loop": true,
+        "enable_video_muted": true,
+        "show_divider": false,
+        "divider_color": "#dddddd",
+        "divider_spacing": 10,
+        "divider_offset": 0
+      }
+    },
+    "flickity_carousel_zC7WD4": {
+      "type": "flickity-carousel",
+      "blocks": {
+        "content_WVD3fi": {
+          "type": "content",
+          "settings": {
+            "icon": "shopify://shop_images/Vector-1.svg",
+            "title": "Test ICon",
+            "content": "<p>We offer Free Shipping on purchases over 350kr with standard <br/>shipping on all orders from Denmark. Our orders are delivered within 1-3<br/> days.</p>"
+          }
+        },
+        "content_UGgUBd": {
+          "type": "content",
+          "settings": {
+            "icon": "shopify://shop_images/Vector-1.svg",
+            "title": "Test ICon",
+            "content": "<p>We offer Free Shipping on purchases over 350kr with standard <br/>shipping on all orders from Denmark. Our orders are delivered within 1-3<br/> days.</p>"
+          }
+        },
+        "content_gADybT": {
+          "type": "content",
+          "settings": {
+            "icon": "shopify://shop_images/Vector-1.svg",
+            "title": "Test ICon",
+            "content": "<p>We offer Free Shipping on purchases over 350kr with standard <br/>shipping on all orders from Denmark. Our orders are delivered within 1-3<br/> days.</p>"
+          }
+        },
+        "content_6p4ipe": {
+          "type": "content",
+          "settings": {
+            "icon": "shopify://shop_images/Vector-1.svg",
+            "title": "Test ICon",
+            "content": "<p>We offer Free Shipping on purchases over 350kr with standard <br/>shipping on all orders from Denmark. Our orders are delivered within 1-3<br/> days.</p>"
+          }
+        },
+        "content_QDj338": {
+          "type": "content",
+          "settings": {
+            "icon": "shopify://shop_images/Vector-1.svg",
+            "title": "Test ICon",
+            "content": "<p>We offer Free Shipping on purchases over 350kr with standard <br/>shipping on all orders from Denmark. Our orders are delivered within 1-3<br/> days.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "content_WVD3fi",
+        "content_UGgUBd",
+        "content_gADybT",
+        "content_6p4ipe",
+        "content_QDj338"
+      ],
+      "disabled": true,
+      "name": "Flickity Slider",
+      "settings": {
+        "heading": "Our Testimonials",
+        "description": "",
+        "alignment": "left",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "comparison_table_y463KP": {
+      "type": "comparison-table",
+      "blocks": {
+        "tablerow_HGfAYk": {
+          "type": "tablerow",
+          "settings": {
+            "title": "Trådløs app-styring",
+            "prd_feature_yes_no": "yes",
+            "other_brand_feature_yes_no": "no"
+          }
+        },
+        "tablerow_cK3hni": {
+          "type": "tablerow",
+          "settings": {
+            "title": "Understøtter livestreaming",
+            "prd_feature_yes_no": "yes",
+            "other_brand_feature_yes_no": "no"
+          }
+        },
+        "tablerow_dc84mR": {
+          "type": "tablerow",
+          "settings": {
+            "title": "Vandtæt op til 3 meter",
+            "prd_feature_yes_no": "yes",
+            "other_brand_feature_yes_no": "no"
+          }
+        },
+        "tablerow_NPnTxf": {
+          "type": "tablerow",
+          "settings": {
+            "title": "Kompakt og lommeklar",
+            "prd_feature_yes_no": "yes",
+            "other_brand_feature_yes_no": "no"
+          }
+        },
+        "tablerow_9YMnbK": {
+          "type": "tablerow",
+          "settings": {
+            "title": "Understøtter både foto og video",
+            "prd_feature_yes_no": "yes",
+            "other_brand_feature_yes_no": "yes"
+          }
+        }
+      },
+      "block_order": [
+        "tablerow_HGfAYk",
+        "tablerow_cK3hni",
+        "tablerow_dc84mR",
+        "tablerow_NPnTxf",
+        "tablerow_9YMnbK"
+      ],
+      "name": "Comparison Table",
+      "settings": {
+        "title": "TrailCam vs. andre kameraer",
+        "subtitle": "<p>Se hvorfor TrailCam vinder hver gang.</p>",
+        "tb_heading_1": "Funktion",
+        "tb_heading_2": "shopify://shop_images/DSC02077-1x1.png",
+        "tb_heading_2a": "TrailCam",
+        "tb_heading_3a": "Andre kameraer",
+        "check_regular": "shopify://shop_images/Check_ring_light.svg",
+        "cross_regular": "shopify://shop_images/Group_1413372218.png",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "trustpilot_slider_8eEBpg": {
+      "type": "trustpilot-slider",
+      "blocks": {
+        "review_VtAgB7": {
+          "type": "review",
+          "settings": {
+            "title": "En gamechanger i min rengø!",
+            "review": "<p>Jeg har aldrig oplevet min sofa og seng føles så rene før. UV-lyset giver virkelig ro i sindet, især fordi jeg har små børn. Let at bruge og super effektiv!</p>",
+            "name": "Maria Jensen"
+          }
+        },
+        "review_jPNFxF": {
+          "type": "review",
+          "settings": {
+            "title": "Perfekt til allergikere",
+            "review": "<p>Jeg lider af stovallergy, og siden jeg begyndte at bruge denne støvsuger, har jeg mærket en stor forskel. HEPA-filtret gør underværker. Kan varmt anbefales!</p>",
+            "name": "Anders Nielsen"
+          }
+        },
+        "review_ENDxP8": {
+          "type": "review",
+          "settings": {
+            "title": "Overraskende kraftfuld!",
+            "review": "<p>Tænkte ikke, at en håndholdt støvsuger kunne være så effektiv. Den fjernede alt fra dyrehår til dybliggende støv i madrassen. Plus, den ser også flot ud.</p>",
+            "name": "Louise Petersen"
+          }
+        }
+      },
+      "block_order": [
+        "review_VtAgB7",
+        "review_jPNFxF",
+        "review_ENDxP8"
+      ],
+      "name": "Trustpilot Slider",
+      "settings": {
+        "desktop_slide": 3,
+        "mobile_slide": 2,
+        "autoplay": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36,
+        "color_scheme": "",
+        "show_arrows": true,
+        "show_dots": false,
+        "show_progress": false,
+        "show_read_more": true,
+        "heading": "Fremragende",
+        "trustpilot_stars": "shopify://shop_images/image_6.png",
+        "trustpilot_text": "4.6 stjerner | elsket af mange",
+        "trustpilot_logo": "shopify://shop_images/Trustpilot_Logo__2022_1_2.jpg",
+        "trustpilot_link": ""
+      }
+    },
+    "image_with_text_LKRjE7": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_pzPBy9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Under vand. Over skyhøje forventninger.",
+            "heading_size": "h1"
+          }
+        },
+        "text_hWz4cA": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>TrailCam™</strong> er vandtæt og skabt til action. Tag den med i poolen, havet eller på regnvejrsture uden bekymringer. Med et klik deler du optagelsen direkte i din app.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_pzPBy9",
+        "text_hWz4cA"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "media_type": "image",
+        "image": "shopify://shop_images/DSC01451-1x1.png",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "external_video_url": "",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "container_radius": 22,
+        "image_radius": 18,
+        "image_behavior": "none",
+        "show_social_links": false,
+        "facebook_url": "",
+        "instagram_url": "",
+        "twitter_url": "",
+        "social_position": "flex-start",
+        "social_icon_size": 24,
+        "social_icon_color": "#000000",
+        "custom_font": "",
+        "custom_font_size": 36,
+        "custom_font_weight": "400",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "background_color": "",
+        "text_color": "",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-21a59f31-25d1-4af2-a305-adca26f0ffa7",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36,
+        "enable_video_autoplay": true,
+        "enable_video_loop": true,
+        "enable_video_muted": true,
+        "show_divider": false,
+        "divider_color": "#dddddd",
+        "divider_spacing": 10,
+        "divider_offset": 0
+      }
+    },
+    "collapsible_content_GkVCmJ": {
+      "type": "collapsible-content",
+      "blocks": {
+        "image_ABrDJq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DSC01340-1x1.png"
+          }
+        },
+        "image_yUkrHG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DSC02083-1x1-zoomed.png"
+          }
+        },
+        "image_YUChGA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DSC02075-1x1-zoom.png"
+          }
+        },
+        "collapsible_row_qFnpPL": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Hvordan opsætter jeg TrailCam første gang?",
+            "row_content": "<p>Du skal blot tænde enheden, forbinde den til appen via Bluetooth eller Wi-Fi, og så er du klar til at optage.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_KBCqx9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Er TrailCam vandtæt?",
+            "row_content": "<p>Ja, kameraet er helt vandtæt og kan bruges under vand, i regnvejr eller på stranden uden problemer.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_U6R8Vz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Hvor lang tid holder batteriet?",
+            "row_content": "<p>TrailCam har en lang batterilevetid, der rækker til flere timers kontinuerlig optagelse – afhængigt af brug.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_jKwezx": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Kan jeg bruge TrailCam uden appen?",
+            "row_content": "<p>Ja, du kan optage direkte på kameraet uden app, men appen giver adgang til flere funktioner og fjernstyring.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_hEYJCH": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Hvilke enheder virker appen med?",
+            "row_content": "<p>Appen er kompatibel med både iOS og Android-enheder.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_ABrDJq",
+        "image_yUkrHG",
+        "image_YUChGA",
+        "collapsible_row_qFnpPL",
+        "collapsible_row_KBCqx9",
+        "collapsible_row_U6R8Vz",
+        "collapsible_row_jKwezx",
+        "collapsible_row_hEYJCH"
+      ],
+      "name": "Collapsible content",
+      "settings": {
+        "heading": "Spørgsmål? Vi har svar!",
+        "heading_alignment": "center",
+        "heading_position": "above",
+        "heading_size": 36,
+        "heading_spacing": 30,
+        "heading_weight": "600",
+        "show_images": true,
+        "content_width": 800,
+        "image_radius": 8,
+        "image_shadow": true,
+        "accordion_background": "#ffffff",
+        "accordion_hover_background": "#f8f8f8",
+        "accordion_border_color": "#eeeeee",
+        "accordion_radius": 8,
+        "accordion_title_color": "",
+        "accordion_content_color": "",
+        "footer_text": "Fandt du ikke svar?",
+        "footer_link_text": "Kontakt os",
+        "footer_link_url": "shopify://pages/contact",
+        "footer_text_color": "",
+        "footer_link_color": "",
+        "background": "",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "tabs_kHctBt",
+    "icon_title_and_description_GBrVYc",
+    "image_with_text_RXd6ad",
+    "flickity_carousel_zC7WD4",
+    "related-products",
+    "comparison_table_y463KP",
+    "trustpilot_slider_8eEBpg",
+    "image_with_text_LKRjE7",
+    "collapsible_content_GkVCmJ"
+  ]
+}
