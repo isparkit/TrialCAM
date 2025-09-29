@@ -43,7 +43,8 @@
       ],
       "settings": {
         "color_scheme": "scheme-4428dece-6737-4eb3-8bef-88cb6443cdc3",
-        "logo_text": "",
+        "logo_image": "shopify://shop_images/TrailCam-inverted.png",
+        "logo_text": "brænder vi for at bringe eventyr og teknologi tættere sammen.",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,
