@@ -31,7 +31,6 @@
         "brand_information_CziLgz": {
           "type": "brand_information",
           "settings": {
-            "brand_heading": "Følg os",
             "show_social": true
           }
         }
@@ -43,8 +42,6 @@
       ],
       "settings": {
         "color_scheme": "scheme-4943d92c-24a4-4590-ac6e-ffc8bcd2117f",
-        "logo_image": "shopify://shop_images/TrailCam-inverted.png",
-        "logo_text": "brænder vi for at bringe eventyr og teknologi tættere sammen.",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,

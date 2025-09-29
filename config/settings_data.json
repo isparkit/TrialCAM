@@ -14,9 +14,9 @@
     "favicon": "shopify://shop_images/TrailCam.png",
     "type_header_font": "barlow_condensed_n7",
     "heading_scale": 100,
-    "type_body_font": "roboto_n4",
+    "type_body_font": "inter_n4",
     "body_scale": 100,
-    "page_width": 1380,
+    "page_width": 1200,
     "spacing_sections": 0,
     "spacing_grid_horizontal": 8,
     "spacing_grid_vertical": 8,
@@ -146,19 +146,19 @@
     },
     "content_for_index": [],
     "blocks": {
+      "7939148295143303891": {
+        "type": "shopify://apps/preorderly/blocks/app-embed/78f4ad8e-4f2e-4238-808a-21c6ab9dfbdc",
+        "disabled": false,
+        "settings": {}
+      },
       "5134484470793087125": {
         "type": "shopify://apps/vitals/blocks/app-embed/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
         "disabled": false,
         "settings": {}
       },
-      "7939148295143303891": {
-        "type": "shopify://apps/preorderly/blocks/app-embed/78f4ad8e-4f2e-4238-808a-21c6ab9dfbdc",
-        "disabled": true,
-        "settings": {}
-      },
       "13375938897875554821": {
         "type": "shopify://apps/qikify-sales-pop-up/blocks/app-embed/688dd516-1cdc-4008-8329-23089a1c4e24",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       }
     },
@@ -262,7 +262,7 @@
           "shadow": "#ffffff"
         }
       },
-      "scheme-4943d92c-24a4-4590-ac6e-ffc8bcd2117f": {
+      "scheme-4428dece-6737-4eb3-8bef-88cb6443cdc3": {
         "settings": {
           "background": "#1c2718",
           "background_gradient": "",
