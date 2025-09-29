@@ -50,6 +50,21 @@
   -%}
     {%- unless only_empty_brand -%}
       <div class="footer__content-top page-width">
+        <div class="custom-footer-block-content-img">
+                {%- if section.settings.logo_image != blank -%} 
+                  <div class="footer-block__image-wrapper">
+                      <img src="{{ section.settings.logo_image | image_url: width: 760 }}" loading="lazy">
+                  </div>
+                {%- endif -%}
+            </div>
+
+
+        <div class="custom-footer-justify-block">
+
+          <div class="custom-flogo-text">
+            <p>{{ section.settings.logo_text }}</p>
+          </div>
+
         {%- if section.blocks.size > 0 -%}
           {%- liquid
             if section.blocks.size == 9
@@ -102,7 +117,8 @@
                       </ul>
                     {%- endif -%}
                   {%- when 'brand_information' -%}
-                    <div class="footer-block__brand-info">
+                    <div class="footer-block__brand-info">                 
+                      <div class="footer-block-brand-text"><h2>{{ block.settings.brand_heading }}</h2></div>                      
                       {%- if settings.brand_image != blank -%}
                         {%- assign brand_image_height = settings.brand_image_width
                           | divided_by: settings.brand_image.aspect_ratio
@@ -133,7 +149,7 @@
                       {%- endif -%}
                     </div>
                   {%- when 'image' -%}
-                    <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
+                    {% comment %} <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
                       {%- if block.settings.image != blank -%}
                         {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
                         <div
@@ -152,15 +168,17 @@
                       {%- else -%}
                         {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
                       {%- endif -%}
-                    </div>
+                    </div> {% endcomment %}
                     <div class="cu-img-text">
-                      <P>brænder vi for at bringe eventyr og teknologi tættere sammen.</P>
+                      <P>{{ block.settings.heading_text }}</P>
                     </div>
                 {%- endcase -%}
               </div>
             {%- endfor -%}
           </div>
         {%- endif -%}
+
+        </div>
 
         <div
           class="footer-block--newsletter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -367,6 +385,11 @@
       "name": "t:sections.footer.blocks.brand_information.name",
       "settings": [
         {
+          "type": "text",
+          "id": "brand_heading",
+          "label": "Brand Heading"
+        },
+        {
           "type": "paragraph",
           "content": "t:sections.footer.blocks.brand_information.settings.paragraph.content"
         },
@@ -396,47 +419,6 @@
           "label": "t:sections.footer.blocks.text.settings.subtext.label"
         }
       ]
-    },
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "range",
-          "id": "image_width",
-          "min": 50,
-          "max": 550,
-          "step": 5,
-          "unit": "px",
-          "label": "Width",
-          "default": 100
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Alignment",
-          "options": [
-            {
-              "value": "",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "center"
-        }
-      ]
     }
   ],
   "settings": [
@@ -445,6 +427,16 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text"
     },
     {
       "type": "header",
@@ -561,10 +553,26 @@
 {% endschema %}
 
 <style>
-  .custom-footer h2.footer-block__heading.inline-richtext {
-    text-align: center;
+  .custom-footer .footer__content-bottom {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 15px;
   }
-  ul.footer-block__details-content.list-unstyled {
+  .custom-footer .footer__blocks-wrapper .footer-block .footer-block__details-content {
     flex-direction: column;
   }
+  .custom-footer .footer__content-top .footer__blocks-wrapper .footer-block .footer-block__brand-info .footer-block-brand-text h2 {
+    margin: 0;
+  }
+  .footer-block__image-wrapper img {
+    display: block;
+    height: auto;
+    max-width: 220px;
+    width: 100%;
+  }
+  
+  .custom-footer .footer__content-top .custom-footer-justify-block {
+    display: flex;
+    gap: 323px;
+}
 </style>

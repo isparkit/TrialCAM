@@ -11,31 +11,13 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "sticky_add_to_cart_MWFGYm": {
-      "type": "sticky-add-to-cart",
-      "name": "Sticky Add to Cart",
-      "settings": {
-        "enable_sticky": true,
-        "full_width": false,
-        "alignment": "right",
-        "button_text": "Tilføj til kurv"
-      }
-    },
     "footer": {
       "type": "footer",
       "blocks": {
-        "image_NExAgL": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/TrailCam-inverted.png",
-            "image_width": 215,
-            "alignment": "center"
-          }
-        },
         "link_list_Li6jLV": {
           "type": "link_list",
           "settings": {
-            "heading": "",
+            "heading": "Støtte",
             "menu": "footer"
           }
         },
@@ -46,28 +28,30 @@
             "subtext": "<p>+01 1234567891<br/><a href=\"#\" target=\"_blank\" title=\"#\">test@gamil.com</a></p>"
           }
         },
-        "brand_information_i9TWBa": {
+        "brand_information_CziLgz": {
           "type": "brand_information",
           "settings": {
-            "show_social": false
+            "brand_heading": "Følg os",
+            "show_social": true
           }
         }
       },
       "block_order": [
-        "image_NExAgL",
         "link_list_Li6jLV",
         "text_wePniG",
-        "brand_information_i9TWBa"
+        "brand_information_CziLgz"
       ],
       "settings": {
         "color_scheme": "scheme-4943d92c-24a4-4590-ac6e-ffc8bcd2117f",
+        "logo_image": "shopify://shop_images/TrailCam-inverted.png",
+        "logo_text": "brænder vi for at bringe eventyr og teknologi tættere sammen.",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,
-        "show_social": true,
+        "show_social": false,
         "enable_country_selector": false,
         "enable_language_selector": false,
-        "payment_enable": true,
+        "payment_enable": false,
         "show_policy": false,
         "margin_top": 0,
         "padding_top": 36,
@@ -76,7 +60,6 @@
     }
   },
   "order": [
-    "sticky_add_to_cart_MWFGYm",
     "footer"
   ]
 }

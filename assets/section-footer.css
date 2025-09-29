@@ -33,7 +33,7 @@
   }
 }
 
-@media screen and (min-width: 750px) {
+/* @media screen and (min-width: 750px) {
   .footer__content-top .grid {
     row-gap: 3rem;
     margin-bottom: 0;
@@ -43,11 +43,11 @@
   .footer__content-top .grid .grid__item{
     width: 100%;
   }
-}
+} */
 
 .footer-block__details-content{
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
