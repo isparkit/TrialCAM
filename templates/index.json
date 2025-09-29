@@ -585,6 +585,80 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
+    },
+    "custom_center_image_with_text_4FcHMC": {
+      "type": "custom-center-image-with-text",
+      "blocks": {
+        "feature_AbmHFH": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_67cef726-3879-4cf4-8a20-d47b9d189822.png",
+            "title": "App-styring i realtid",
+            "description": "Start og stop optagelser, skift tilstande og overfør filer – direkte fra din smartphone.",
+            "position": "left"
+          }
+        },
+        "feature_YGxrRn": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_67cef726-3879-4cf4-8a20-d47b9d189822.png",
+            "title": "App-styring i realtid",
+            "description": "Start og stop optagelser, skift tilstande og overfør filer – direkte fra din smartphone.",
+            "position": "right"
+          }
+        },
+        "feature_3P7yjc": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_67cef726-3879-4cf4-8a20-d47b9d189822.png",
+            "title": "App-styring i realtid",
+            "description": "Start og stop optagelser, skift tilstande og overfør filer – direkte fra din smartphone.",
+            "position": "right"
+          }
+        }
+      },
+      "block_order": [
+        "feature_AbmHFH",
+        "feature_YGxrRn",
+        "feature_3P7yjc"
+      ],
+      "name": "Center Image with Blocks",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Designet til at performe – uanset hvor du er",
+        "subheading": "Funktioner, der gør en forskel.",
+        "center_image": "shopify://shop_images/product_3.png",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "custom_image_with_text_JCCzTq": {
+      "type": "custom-image-with-text",
+      "name": "Custom Image With Text",
+      "settings": {
+        "color_scheme": "background-1",
+        "layout": "left",
+        "image_1": "shopify://shop_images/image1.png",
+        "image_2": "shopify://shop_images/image2_2.png",
+        "heading": "Perfekt til aktive livsstile",
+        "subtext": "<p>TrailCamTM designet til at følge dig uden at være i vejen. Den lette, håndholdte størrelse og trådløse kontrol gør det nemt at fange øjeblikket – helt uden besvær.<br/>Klar til at optage dit næste eventyr?</p>",
+        "button_label": "Se hvor let det er",
+        "button_link": "#"
+      }
+    },
+    "custom_image_with_text_gYVtpN": {
+      "type": "custom-image-with-text",
+      "name": "Custom Image With Text",
+      "settings": {
+        "color_scheme": "background-1",
+        "layout": "right",
+        "image_1": "shopify://shop_images/22cb46d945a9aa538fef1f920978c3fe6ca42e9d_1.png",
+        "image_2": "shopify://shop_images/b5afa6785f477edc3358964b66b18d00b5fd04cc_1.png",
+        "heading": "Under vand. Over skyhøje forventninger.",
+        "subtext": "<p>TrailCamTM er vandtæt og skabt til action. Tag den med i poolen, havet eller på regnvejrsture uden bekymringer. Med et klik deler du optagelsen direkte i din app.<br/>Klar til at optage dit næste eventyr?</p>",
+        "button_label": "Tag TrailCam™ med på tur",
+        "button_link": "#"
+      }
     }
   },
   "order": [
@@ -595,6 +669,9 @@
     "image_with_text_6QkdcQ",
     "feature_showcase_mqrCDH",
     "trustpilot_slider_VDGxmW",
-    "collapsible_content_Wwe6dP"
+    "collapsible_content_Wwe6dP",
+    "custom_center_image_with_text_4FcHMC",
+    "custom_image_with_text_JCCzTq",
+    "custom_image_with_text_gYVtpN"
   ]
 }
