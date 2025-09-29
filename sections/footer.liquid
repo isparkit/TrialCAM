@@ -91,7 +91,7 @@
                 {% endif %}
               >
                 {%- if block.settings.heading != blank -%}
-                  <h2 class="footer-block__heading inline-richtext">{{- block.settings.heading -}}</h2>
+                  <h5 class="footer-block__heading inline-richtext">{{- block.settings.heading -}}</h5>
                 {%- endif -%}
 
                 {%- case block.type -%}
@@ -118,7 +118,7 @@
                     {%- endif -%}
                   {%- when 'brand_information' -%}
                     <div class="footer-block__brand-info">                 
-                      <div class="footer-block-brand-text"><h2>{{ block.settings.brand_heading }}</h2></div>                      
+                      <div class="footer-block-brand-text"><h5>{{ block.settings.brand_heading }}</h5></div>                      
                       {%- if settings.brand_image != blank -%}
                         {%- assign brand_image_height = settings.brand_image_width
                           | divided_by: settings.brand_image.aspect_ratio
@@ -272,12 +272,12 @@
   {%- endif -%}
 
   <div
-    class="footer__content-bottom{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    class="page-width footer__content-bottom{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     {% if settings.animations_reveal_on_scroll %}
       data-cascade
     {% endif %}
   >
-    <div class="footer__content-bottom-wrapper page-width">
+    <div class="footer__content-bottom-wrapper">
       <div class="footer__column footer__localization isolate">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
           <localization-form>
@@ -331,7 +331,7 @@
         {% endcomment %}
       </div>
     </div>
-    <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
+    <div class="footer__content-bottom-wrapper{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
       <div class="footer__copyright caption">
         <small class="copyright__content"
           >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
@@ -561,6 +561,18 @@
   .custom-footer .footer__blocks-wrapper .footer-block .footer-block__details-content {
     flex-direction: column;
   }
+  .custom-footer .footer__blocks-wrapper .footer-block .footer-block__details-content li {
+    margin-right: 0 !important;
+  }
+  .custom-footer .footer__blocks-wrapper .footer-block .footer-block__details-content li a {
+    padding: 0;
+    font-weight: 400;
+    font-size: clamp(16px, 0.3vw + 13px, 18px) !important;
+    line-height: 100%;
+    text-transform: capitalize;
+    font-family: Barlow Condensed;
+    color: rgba(var(--color-foreground));
+  }
   .custom-footer .footer__content-top .footer__blocks-wrapper .footer-block .footer-block__brand-info .footer-block-brand-text h2 {
     margin: 0;
   }
@@ -570,9 +582,84 @@
     max-width: 220px;
     width: 100%;
   }
-  
+  .custom-footer .footer__content-top .custom-footer-justify-block .custom-flogo-text {
+    width: 50%;
+  }
   .custom-footer .footer__content-top .custom-footer-justify-block {
     display: flex;
-    gap: 323px;
-}
+    padding-top: 30px;
+    justify-content: space-between;
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block .custom-flogo-text p {
+    margin: 0;
+    width: 100%;
+    max-width: 425px;
+    line-height: 28px;
+    color: rgba(var(--color-foreground));
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper .footer-block .footer-block__brand-info .footer-block-brand-text h5, 
+  .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper .footer-block h5 {
+    margin: 0;
+    font-family: Barlow Condensed;
+    font-weight: 600;
+    line-height: 100%;
+    margin-bottom: 0px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px !important;
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper .footer-block {
+    width: calc((33.33% - 20px) / 3) !important;
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper .footer-block .footer-block__details-content p a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Barlow Condensed';
+    font-weight: 400;
+    font-size: clamp(16px, 0.3vw + 13px, 18px) !important;
+    line-height: 100%;
+    color: rgba(var(--color-foreground));
+  }
+  .footer__list-social .list-social__item .list-social__link {
+    border: 1px solid #57A014;
+    border-radius: 100%;
+  }
+  .custom-footer .footer__content-bottom .footer__content-bottom-wrapper .caption {
+    font-size: clamp(16px, 0.3vw + 13px, 18px) !important;
+    color: rgba(var(--color-foreground));
+  }
+
+  @media screen and (max-width: 1024px) { 
+    .custom-footer .footer__content-top .custom-footer-justify-block{
+      flex-wrap: wrap;
+    }
+    .custom-footer .footer__content-top .custom-footer-justify-block .custom-flogo-text {
+      width: 100%;
+    }
+    .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper {
+      width: 100%;
+      padding-top: 10px;
+    }
+  }
+
+  @media screen and (max-width: 767px) { 
+    .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper .footer-block{
+      width: 100% !important;
+    }
+    .footer__localization:empty+.footer__column--info {
+    align-items: center;
+    }
+    .footer__content-bottom-wrapper--center {
+      justify-content: center;
+    }
+    .custom-footer-block-content-img{
+    display: flex;
+    justify-content: center;
+    }
+  }
 </style>
