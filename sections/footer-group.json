@@ -31,6 +31,7 @@
         "brand_information_CziLgz": {
           "type": "brand_information",
           "settings": {
+            "brand_heading": "",
             "show_social": true
           }
         }
@@ -41,7 +42,8 @@
         "brand_information_CziLgz"
       ],
       "settings": {
-        "color_scheme": "scheme-4943d92c-24a4-4590-ac6e-ffc8bcd2117f",
+        "color_scheme": "scheme-4428dece-6737-4eb3-8bef-88cb6443cdc3",
+        "logo_text": "",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,
