@@ -1,0 +1,157 @@
+<section class="testimonial-section">
+  <div class="testimonial-inner page-width">
+    <h2 class="testimonial-title">{{ section.settings.title }}</h2>
+    <p class="testimonial-subtitle">{{ section.settings.sub_content }}</p>
+
+    <div class="test-cli">
+      <div class="testimonial-slider swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="testimonial-slide swiper-slide">
+              {% if block.settings.image != blank %}
+                <div class="testimonial-image">
+                  <img src="{{ block.settings.image | image_url: width: 100 }}" alt="testimonial logo">
+                </div>
+              {% endif %}
+
+              <h3 class="testimonial-slide-title">{{ block.settings.slide_title }}</h3>
+              <p class="testimonial-slide-content">{{ block.settings.slide_content }}</p>
+              <span class="testimonial-customer">{{ block.settings.customer_name }}</span>
+            </div>
+          {% endfor %}
+        </div>
+
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonial Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Hvad klienten siger om os"
+    },
+    {
+      "type": "textarea",
+      "id": "sub_content",
+      "label": "Sub Content",
+      "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "slide_title",
+          "label": "Slide Title",
+          "default": "Genial til stories og reels"
+        },
+        {
+          "type": "textarea",
+          "id": "slide_content",
+          "label": "Slide Content",
+          "default": "Elsker hvor nemt det er at smide klip op på Instagram direkte."
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer Name",
+          "default": "Kasper V."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Testimonial Slider",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  .testimonial-section {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .testimonial-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .testimonial-subtitle {
+    font-size: 14px;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: #666;
+  }
+  .testimonial-slider {
+    width: 100%;
+  }
+  .testimonial-slide {
+    background: #f7fdf7;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .testimonial-image img {
+    margin: 0 auto 10px;
+  }
+  .testimonial-slide-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .testimonial-slide-content {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .testimonial-customer {
+    font-weight: bold;
+    color: #000;
+  }
+{% endstylesheet %}
+
+<!-- Swiper JS (CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.testimonial-slider', {
+      loop: true,
+      spaceBetween: 20,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      slidesPerView: 1, // default (mobile)
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  });
+</script>

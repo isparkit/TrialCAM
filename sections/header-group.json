@@ -24,6 +24,7 @@
         },
         "announcement_XNHftk": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "30 Dages returret",
             "icon": "return",
@@ -32,6 +33,7 @@
         },
         "announcement_itFc8c": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "Levering 1-3 dage",
             "icon": "truck",
@@ -40,6 +42,7 @@
         },
         "announcement_cexaGg": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "1000+ Tilfredse kunder",
             "icon": "star",
@@ -62,9 +65,9 @@
         "padding_bottom": "none",
         "padding_horizontal": "medium",
         "mobile_icon_background": "#ffffff",
-        "show_navigation_arrows": true,
-        "auto_rotate": true,
-        "change_slides_speed": 5
+        "show_navigation_arrows": false,
+        "auto_rotate": false,
+        "change_slides_speed": 3
       }
     },
     "custom_announcement_bar_UJUjfr": {
@@ -112,7 +115,6 @@
         "announcement_k7GUKc",
         "announcement_Yw8R7p"
       ],
-      "disabled": true,
       "name": "Custom Announcement Bar",
       "settings": {
         "background_color": "#253237",

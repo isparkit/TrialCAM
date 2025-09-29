@@ -219,6 +219,7 @@
         "caption_kAzzYh",
         "button_BMx4aX"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "media_type": "image",
@@ -302,6 +303,7 @@
         "caption_pcNDiD",
         "button_DKi7xR"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "media_type": "image",
@@ -392,6 +394,7 @@
         "feature_3fBRRr",
         "feature_iWxH4A"
       ],
+      "disabled": true,
       "name": "Feature Showcase",
       "settings": {
         "image": "shopify://shop_images/DSC01426-1x1.png",
@@ -455,6 +458,7 @@
         "review_JNKwUd",
         "review_E67UdQ"
       ],
+      "disabled": true,
       "name": "Trustpilot Slider",
       "settings": {
         "desktop_slide": 3,
@@ -474,117 +478,6 @@
         "trustpilot_text": "4.6 stjerner | elsket af mange",
         "trustpilot_logo": "shopify://shop_images/Trustpilot_Logo__2022_1_2.jpg",
         "trustpilot_link": ""
-      }
-    },
-    "collapsible_content_Wwe6dP": {
-      "type": "collapsible-content",
-      "blocks": {
-        "image_UVXAHr": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/DSC01340-1x1.png"
-          }
-        },
-        "image_3bfR6a": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/DSC02083-1x1-zoomed.png"
-          }
-        },
-        "image_jdqc7Q": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/DSC02075-1x1-zoom.png"
-          }
-        },
-        "collapsible_row_xKNn9C": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Hvordan opsætter jeg TrailCam første gang?",
-            "row_content": "<p>Du skal blot tænde enheden, forbinde den til appen via Bluetooth eller Wi-Fi, og så er du klar til at optage.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_cHPwVN": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Er TrailCam vandtæt?",
-            "row_content": "<p>Ja, kameraet er helt vandtæt og kan bruges under vand, i regnvejr eller på stranden uden problemer.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_7M6EUg": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Hvor lang tid holder batteriet?",
-            "row_content": "<p>TrailCam har en lang batterilevetid, der rækker til flere timers kontinuerlig optagelse – afhængigt af brug.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_L9pdJk": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Kan jeg bruge TrailCam uden appen?",
-            "row_content": "<p>Ja, du kan optage direkte på kameraet uden app, men appen giver adgang til flere funktioner og fjernstyring.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_Xw7QMq": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Hvilke enheder virker appen med?",
-            "row_content": "<p>Appen er kompatibel med både iOS og Android-enheder.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_qFdq3j": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Trailcam.dk CVR",
-            "row_content": "<p>CVR : 43764136</p>",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_UVXAHr",
-        "image_3bfR6a",
-        "image_jdqc7Q",
-        "collapsible_row_xKNn9C",
-        "collapsible_row_cHPwVN",
-        "collapsible_row_7M6EUg",
-        "collapsible_row_L9pdJk",
-        "collapsible_row_Xw7QMq",
-        "collapsible_row_qFdq3j"
-      ],
-      "name": "Collapsible content",
-      "settings": {
-        "heading": "Spørgsmål? Vi har svar!",
-        "heading_alignment": "center",
-        "heading_position": "above",
-        "heading_size": 36,
-        "heading_spacing": 30,
-        "heading_weight": "600",
-        "show_images": true,
-        "content_width": 800,
-        "image_radius": 8,
-        "image_shadow": true,
-        "accordion_background": "#ffffff",
-        "accordion_hover_background": "#f8f8f8",
-        "accordion_border_color": "#eeeeee",
-        "accordion_radius": 8,
-        "accordion_title_color": "",
-        "accordion_content_color": "",
-        "footer_text": "Fandt du ikke svar?",
-        "footer_link_text": "Kontakt os",
-        "footer_link_url": "shopify://pages/contact",
-        "footer_text_color": "",
-        "footer_link_color": "",
-        "background": "",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
       }
     },
     "custom_center_image_with_text_4FcHMC": {
@@ -660,6 +553,192 @@
         "button_label": "Tag TrailCam™ med på tur",
         "button_link": "#"
       }
+    },
+    "collapsible_content_Wwe6dP": {
+      "type": "collapsible-content",
+      "blocks": {
+        "image_UVXAHr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DSC01340-1x1.png"
+          }
+        },
+        "image_3bfR6a": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/DSC02083-1x1-zoomed.png"
+          }
+        },
+        "image_jdqc7Q": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/DSC02075-1x1-zoom.png"
+          }
+        },
+        "collapsible_row_xKNn9C": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Hvordan opsætter jeg TrailCam første gang?",
+            "row_content": "<p>Du skal blot tænde enheden, forbinde den til appen via Bluetooth eller Wi-Fi, og så er du klar til at optage.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_cHPwVN": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Er TrailCam vandtæt?",
+            "row_content": "<p>Ja, kameraet er helt vandtæt og kan bruges under vand, i regnvejr eller på stranden uden problemer.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_7M6EUg": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Hvor lang tid holder batteriet?",
+            "row_content": "<p>TrailCam har en lang batterilevetid, der rækker til flere timers kontinuerlig optagelse – afhængigt af brug.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_L9pdJk": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Kan jeg bruge TrailCam uden appen?",
+            "row_content": "<p>Ja, du kan optage direkte på kameraet uden app, men appen giver adgang til flere funktioner og fjernstyring.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_Xw7QMq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Hvilke enheder virker appen med?",
+            "row_content": "<p>Appen er kompatibel med både iOS og Android-enheder.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_qFdq3j": {
+          "type": "collapsible_row",
+          "disabled": true,
+          "settings": {
+            "heading": "Trailcam.dk CVR",
+            "row_content": "<p>CVR : 43764136</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_UVXAHr",
+        "image_3bfR6a",
+        "image_jdqc7Q",
+        "collapsible_row_xKNn9C",
+        "collapsible_row_cHPwVN",
+        "collapsible_row_7M6EUg",
+        "collapsible_row_L9pdJk",
+        "collapsible_row_Xw7QMq",
+        "collapsible_row_qFdq3j"
+      ],
+      "name": "Collapsible content",
+      "settings": {
+        "heading": "Spørgsmål? Vi har svar!",
+        "heading_alignment": "center",
+        "heading_position": "above",
+        "heading_size": 36,
+        "heading_spacing": 30,
+        "heading_weight": "600",
+        "show_images": true,
+        "content_width": 800,
+        "image_radius": 8,
+        "image_shadow": true,
+        "accordion_background": "#ffffff",
+        "accordion_hover_background": "#f8f8f8",
+        "accordion_border_color": "#eeeeee",
+        "accordion_radius": 8,
+        "accordion_title_color": "",
+        "accordion_content_color": "",
+        "footer_text": "",
+        "footer_link_text": "",
+        "footer_link_url": "shopify://pages/contact",
+        "footer_text_color": "",
+        "footer_link_color": "",
+        "background": "",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "custom_review_customer_JapjwQ": {
+      "type": "custom-review-customer",
+      "blocks": {
+        "testimonial_7cdyEW": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1.png",
+            "slide_title": "Genial til stories og reels",
+            "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
+            "customer_name": "Kasper V."
+          }
+        },
+        "testimonial_A8BTeW": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1.png",
+            "slide_title": "Genial til stories og reels",
+            "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
+            "customer_name": "Kasper V."
+          }
+        },
+        "testimonial_WTMQtc": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1.png",
+            "slide_title": "Genial til stories og reels",
+            "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
+            "customer_name": "Kasper V."
+          }
+        },
+        "testimonial_HcmaDa": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1.png",
+            "slide_title": "Genial til stories og reels",
+            "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
+            "customer_name": "Kasper V."
+          }
+        },
+        "testimonial_WyfjbX": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1.png",
+            "slide_title": "Genial til stories og reels",
+            "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
+            "customer_name": "Kasper V."
+          }
+        },
+        "testimonial_ahbbwf": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1.png",
+            "slide_title": "Genial til stories og reels",
+            "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
+            "customer_name": "Kasper V."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_7cdyEW",
+        "testimonial_A8BTeW",
+        "testimonial_WTMQtc",
+        "testimonial_HcmaDa",
+        "testimonial_WyfjbX",
+        "testimonial_ahbbwf"
+      ],
+      "name": "Custom Testimonial Slider",
+      "settings": {
+        "title": "Hvad klienten siger om os",
+        "sub_content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      }
     }
   },
   "order": [
@@ -670,9 +749,10 @@
     "image_with_text_6QkdcQ",
     "feature_showcase_mqrCDH",
     "trustpilot_slider_VDGxmW",
-    "collapsible_content_Wwe6dP",
     "custom_center_image_with_text_4FcHMC",
     "custom_image_with_text_JCCzTq",
-    "custom_image_with_text_gYVtpN"
+    "custom_image_with_text_gYVtpN",
+    "collapsible_content_Wwe6dP",
+    "custom_review_customer_JapjwQ"
   ]
 }
