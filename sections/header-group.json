@@ -112,6 +112,7 @@
         "announcement_k7GUKc",
         "announcement_Yw8R7p"
       ],
+      "disabled": true,
       "name": "Custom Announcement Bar",
       "settings": {
         "background_color": "#253237",

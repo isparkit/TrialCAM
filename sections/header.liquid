@@ -294,9 +294,11 @@
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {% if cart == empty %}
-          <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
+          {% comment %} <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span> {% endcomment %}
+          <span class="svg-wrapper">{{ 'cu-icon-cart-empty.svg' | inline_asset_content }}</span>
         {% else %}
-          <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+          {% comment %} <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span> {% endcomment %}
+          <span class="svg-wrapper">{{ 'cu-icon-cart.svg' | inline_asset_content }}</span>
         {% endif %}
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}
@@ -715,5 +717,9 @@
 <style>
   .custom-header .list-menu--inline {
     align-items: center;
+  }
+  .custom-header .svg-wrapper {
+    width: 20px !important;
+    height: 20px !important;
   }
 </style>
