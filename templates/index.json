@@ -162,7 +162,7 @@
       "name": "Icon with Text",
       "settings": {
         "enable_slider_mobile": true,
-        "enable_slider_desktop": true,
+        "enable_slider_desktop": false,
         "background_color": "#f4f4f4",
         "padding_top": 20,
         "padding_bottom": 20,
