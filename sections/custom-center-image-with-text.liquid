@@ -1,0 +1,239 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="custom-center-blocks section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="custom-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <h5 class="custom-subheading">{{ section.settings.subheading }}</h5>
+    {% endif %}
+
+    <div class="custom-content">
+      <div class="left-side">
+        {% for block in section.blocks %}
+          {% if block.settings.position == 'left' %}
+            <div class="feature-block" {{ block.shopify_attributes }}>
+              {% if block.settings.icon %}
+                <img src="{{ block.settings.icon | img_url: '100x100' }}" alt="icon">
+              {% endif %}
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.description }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="center-image">
+        {% if section.settings.center_image %}
+          <img src="{{ section.settings.center_image | img_url: '400x' }}" alt="Center Image">
+        {% endif %}
+      </div>
+
+      <div class="right-side">
+        {% for block in section.blocks %}
+          {% if block.settings.position == 'right' %}
+            <div class="feature-block" {{ block.shopify_attributes }}>
+              {% if block.settings.icon %}
+                <img src="{{ block.settings.icon | img_url: '100x100' }}" alt="icon">
+              {% endif %}
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.description }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Center Image with Blocks",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Designet til at performe – uanset hvor du er"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Funktioner, der gør en forskel."
+    },
+    {
+      "type": "image_picker",
+      "id": "center_image",
+      "label": "Center Image"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon/Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "App-styring i realtid"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Start og stop optagelser, skift tilstande og overfør filer – direkte fra din smartphone."
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Block Position",
+          "options": [
+            { "value": "left", "label": "Left Side" },
+            { "value": "right", "label": "Right Side" }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Center Image with Blocks",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.custom-center-blocks {
+  text-align: center;
+  background: #f5f8f2;
+}
+    .custom-center-blocks h2.custom-heading {
+        font-family: Barlow Condensed;
+        font-weight: 700;
+        line-height: 100%;
+        text-align: center;
+        margin: 0;
+        color: rgba(var(--color-foreground));
+    }
+    .custom-center-blocks h5.custom-subheading {
+        margin: 0;
+        padding-top: 10px;
+        font-family: Roboto;
+        font-weight: 400;
+        line-height: 100%;
+        text-align: center;
+        color: rgba(var(--color-foreground));
+    }
+    .custom-center-blocks .custom-content {
+        padding-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+.custom-center-blocks .custom-content .left-side, 
+.custom-center-blocks .custom-content .right-side {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 70px;
+  padding: 30px 90px;
+}
+.custom-content .left-side .feature-block,
+.custom-content .right-side .feature-block {
+    text-align: center;
+    gap: 10px;
+    max-width: 350px;
+    width: 100%;
+}
+.custom-center-blocks .custom-content .left-side .feature-block h3,
+.custom-center-blocks .custom-content .right-side .feature-block h3{
+    margin: 0;
+}
+.custom-center-blocks .custom-content .left-side .feature-block p, 
+.custom-center-blocks .custom-content .right-side .feature-block p {
+    margin: 0;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 28px;
+    text-align: center;
+    color: rgba(var(--color-foreground));
+}
+
+@media screen and (max-width: 1024px) {
+    .custom-center-blocks .custom-content .left-side, 
+    .custom-center-blocks .custom-content .right-side {
+        gap: 30px;
+        padding: 30px 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+  .custom-center-blocks .custom-content {
+    flex-direction: column;
+    gap: 0px;
+  }
+  .left-side, .right-side {
+    text-align: center;
+    align-items: center;
+  }
+    .custom-center-blocks .custom-content .left-side{
+    order: 2;
+    }
+    .custom-center-blocks .custom-content .center-image {
+    order: 1;
+    }
+    .custom-center-blocks .custom-content .right-side {
+    order: 3;
+    }
+}
+</style>

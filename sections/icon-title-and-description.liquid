@@ -59,13 +59,13 @@
   @media (max-width: 1200px){
     .{{ section.id }} .iconTextSlider .icon-text-item{
       /* width: calc((100% / {{ section.settings.slides_tablet }}) - ( (20px * ({{ section.settings.slides_tablet }} - 1) / {{ section.settings.slides_tablet }} ) ) ); */
-      width: calc(100% / {{ section.settings.slides_tablet }}); 
+      width: calc(100% / {{ section.settings.slides_tablet }});
     }
   }
   @media (max-width: 767px){
     .{{ section.id }} .iconTextSlider .icon-text-item{
       /* width: calc((100% / {{ section.settings.slides_mobile }}) - ( (20px * ({{ section.settings.slides_mobile }} - 1) / {{ section.settings.slides_mobile }} ) ) ); */
-      width: calc(100% / {{ section.settings.slides_mobile }}); 
+      width: calc(100% / {{ section.settings.slides_mobile }});
     }
   }
   .iconTextSlider {
@@ -80,110 +80,116 @@
   }
 {% endstyle %}
 
-
-
-
-<div class="{{ section.id }}" style="background: {{ section.settings.background_color }};">
+<div
+  class="{{section.settings.custom_icon_class}} {{ section.id }}"
+  style="background: {{ section.settings.background_color }};"
+>
   <div class="page-width">
-    <div id="section-icon-text-{{ section.id }}" class="{% if section.settings.enable_slider_mobile %}mobile_slider{% endif %} {% if section.settings.enable_slider_desktop %}desktop_slider{% endif %} icon-text-section index-section" 
-         >
-      <div class="iconTextSlider icon-text-wrapper 
-           {% if section.settings.enable_slider_mobile == false %}remove_mobile_slider{% endif %}
-           {% if section.settings.enable_slider_desktop == false %}remove_desktop_slider{% endif %}"
-           style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+    <div
+      id="section-icon-text-{{ section.id }}"
+      class="{% if section.settings.enable_slider_mobile %}mobile_slider{% endif %} {% if section.settings.enable_slider_desktop %}desktop_slider{% endif %} icon-text-section index-section"
+    >
+      <div
+        class="
+          iconTextSlider icon-text-wrapper
+          {% if section.settings.enable_slider_mobile == false %}remove_mobile_slider{% endif %}
+          {% if section.settings.enable_slider_desktop == false %}remove_desktop_slider{% endif %}
+        "
+        style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+      >
         {% for block in section.blocks %}
           <div class="icon-text-item  icon-position-{{ section.settings.icon_position }}">
             {% if block.settings.icon != blank %}
               {{ block.settings.icon | image_url: width: block.settings.icon.width | image_tag: loading: 'lazy' }}
             {% endif %}
-          <div class="textWrap">
-            <h3 class="icon-text-title">{{ block.settings.title }}</h3>
-            <div class="icon-text-content">{{ block.settings.content }}</div>
-          </div>
+            <div class="textWrap">
+              <h5 class="icon-text-title">{{ block.settings.title }}</h5>
+              <div class="icon-text-content">{{ block.settings.content }}</div>
+            </div>
           </div>
         {% endfor %}
       </div>
-    </div> 
+    </div>
   </div>
 </div>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const sectionId = "section-icon-text-{{ section.id }}";
-  const section = document.getElementById(sectionId);
-  if (!section) return;
+  document.addEventListener("DOMContentLoaded", function () {
+    const sectionId = "section-icon-text-{{ section.id }}";
+    const section = document.getElementById(sectionId);
+    if (!section) return;
 
-  const sliderContainer = section.querySelector(".iconTextSlider");
-  let flkty = null; // Store Flickity instance
+    const sliderContainer = section.querySelector(".iconTextSlider");
+    let flkty = null; // Store Flickity instance
 
-  function getSlidesToShow() {
-    if (window.innerWidth > 1200 && {{ section.settings.enable_slider_desktop }}) return {{ section.settings.slides_desktop }};
-    if (window.innerWidth > 767) return {{ section.settings.slides_tablet }};
-    return {{ section.settings.slides_mobile }};
-  }
+    function getSlidesToShow() {
+      if (window.innerWidth > 1200 && {{ section.settings.enable_slider_desktop }}) return {{ section.settings.slides_desktop }};
+      if (window.innerWidth > 767) return {{ section.settings.slides_tablet }};
+      return {{ section.settings.slides_mobile }};
+    }
 
-  function initializeFlickity() {
-    if (!sliderContainer) return;
+    function initializeFlickity() {
+      if (!sliderContainer) return;
 
-    if ( window.innerWidth > 767 && !{{ section.settings.enable_slider_desktop }}) {
+      if ( window.innerWidth > 767 && !{{ section.settings.enable_slider_desktop }}) {
+        if (flkty) {
+          flkty.destroy();
+          flkty = null;
+        }
+        return; // Exit early, don't initialize Flickity
+      }
+      else if (window.innerWidth <= 767 && sliderContainer.classList.contains("remove_mobile_slider")) {
+        if (flkty) {
+          flkty.destroy();
+          flkty = null;
+        }
+        return; // Exit early, don't initialize Flickity
+      }
+
       if (flkty) {
-        flkty.destroy();
+        flkty.destroy(); // Destroy previous instance before reinitializing
         flkty = null;
       }
-      return; // Exit early, don't initialize Flickity
-    }
-    else if (window.innerWidth <= 767 && sliderContainer.classList.contains("remove_mobile_slider")) {
-      if (flkty) {
-        flkty.destroy();
-        flkty = null;
+
+      let slidesToShow = getSlidesToShow();
+
+      flkty = new Flickity(sliderContainer, {
+        cellAlign: "left",
+        contain: true,
+        wrapAround: {{ section.settings.wrap_around }},
+        prevNextButtons: {{ section.settings.enable_arrows }},
+        pageDots: {{ section.settings.enable_dots }},
+        autoPlay: {{ section.settings.auto_play }},
+        freeScroll: false,
+        draggable: true,
+        groupCells:slidesToShow
+      });
+
+      let prevButton = sliderContainer.querySelector(".flickity-prev-next-button.flickity-previous");
+      let nextButton = sliderContainer.querySelector(".flickity-prev-next-button.flickity-next");
+
+      function updateArrows() {
+        if (!prevButton || !nextButton) return;
+        prevButton.disabled = flkty.selectedIndex === 0;
+        var slindex = flkty.selectedIndex + 1;
+        nextButton.disabled = slindex = flkty.slides.length;
       }
-      return; // Exit early, don't initialize Flickity
-    }
 
-    if (flkty) {
-      flkty.destroy(); // Destroy previous instance before reinitializing
-      flkty = null;
-    }
+      flkty.on("change", () => {
+        updateArrows();
+      });
 
-    let slidesToShow = getSlidesToShow();
-
-    flkty = new Flickity(sliderContainer, {
-      cellAlign: "left",
-      contain: true,
-      wrapAround: {{ section.settings.wrap_around }},
-      prevNextButtons: {{ section.settings.enable_arrows }},
-      pageDots: {{ section.settings.enable_dots }},
-      autoPlay: {{ section.settings.auto_play }},
-      freeScroll: false,
-      draggable: true,
-      groupCells:slidesToShow
-    });
-
-    let prevButton = sliderContainer.querySelector(".flickity-prev-next-button.flickity-previous");
-    let nextButton = sliderContainer.querySelector(".flickity-prev-next-button.flickity-next");
-
-    function updateArrows() {
-      if (!prevButton || !nextButton) return;
-      prevButton.disabled = flkty.selectedIndex === 0;
-      var slindex = flkty.selectedIndex + 1;
-      nextButton.disabled = slindex = flkty.slides.length;
-    }
-
-    flkty.on("change", () => {
       updateArrows();
-    });
-
-    updateArrows();
-  }
-
-  let lastWidth = window.innerWidth;
-  window.addEventListener("resize", function () {
-    if (window.innerWidth !== lastWidth) {
-      lastWidth = window.innerWidth;
-      initializeFlickity();
     }
+
+    let lastWidth = window.innerWidth;
+    window.addEventListener("resize", function () {
+      if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        initializeFlickity();
+      }
+    });
+    initializeFlickity(); // Run on page load
   });
-  initializeFlickity(); // Run on page load
-});
 </script>
 
 {% schema %}
@@ -192,6 +198,11 @@ document.addEventListener("DOMContentLoaded", function () {
   "tag": "section",
   "class": "section-icon-text",
   "settings": [
+    {
+      "type": "text",
+      "id": "custom_icon_class",
+      "label": "Custom Class"
+    },
     {
       "type": "checkbox",
       "id": "enable_slider_mobile",
@@ -353,3 +364,30 @@ document.addEventListener("DOMContentLoaded", function () {
   ]
 }
 {% endschema %}
+
+<style>
+  .icon-first-section .icon-text-section {
+    max-width: 1060px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 10px 0px #00000040;
+    /* margin-top: -50px; */
+    /* z-index: 1; */
+    /* position: relative; */
+  }
+  .icon-first-section h5.icon-text-title {
+    line-height: 1em;
+    letter-spacing: 0px;
+    color: #000000;
+    font-weight: 600;
+  }
+  .icon-first-section .icon-text-item img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .icon-first-section .icon-text-item {
+    border-right: 2px dashed #57a014;
+  }
+  .icon-first-section .icon-text-item:last-child {
+    border: unset;
+  }
+</style>

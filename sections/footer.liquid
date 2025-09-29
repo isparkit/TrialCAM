@@ -25,11 +25,9 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-
-  
 {%- endstyle -%}
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+<footer class="custom-footer footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -52,6 +50,21 @@
   -%}
     {%- unless only_empty_brand -%}
       <div class="footer__content-top page-width">
+        <div class="custom-footer-block-content-img">
+                {%- if section.settings.logo_image != blank -%} 
+                  <div class="footer-block__image-wrapper">
+                      <img src="{{ section.settings.logo_image | image_url: width: 760 }}" loading="lazy">
+                  </div>
+                {%- endif -%}
+            </div>
+
+
+        <div class="custom-footer-justify-block">
+
+          <div class="custom-flogo-text">
+            <p>{{ section.settings.logo_text }}</p>
+          </div>
+
         {%- if section.blocks.size > 0 -%}
           {%- liquid
             if section.blocks.size == 9
@@ -78,7 +91,7 @@
                 {% endif %}
               >
                 {%- if block.settings.heading != blank -%}
-                  <h2 class="footer-block__heading inline-richtext">{{- block.settings.heading -}}</h2>
+                  <h5 class="footer-block__heading inline-richtext">{{- block.settings.heading -}}</h5>
                 {%- endif -%}
 
                 {%- case block.type -%}
@@ -104,7 +117,8 @@
                       </ul>
                     {%- endif -%}
                   {%- when 'brand_information' -%}
-                    <div class="footer-block__brand-info">
+                    <div class="footer-block__brand-info">                 
+                      <div class="footer-block-brand-text"><h5>{{ block.settings.brand_heading }}</h5></div>                      
                       {%- if settings.brand_image != blank -%}
                         {%- assign brand_image_height = settings.brand_image_width
                           | divided_by: settings.brand_image.aspect_ratio
@@ -135,7 +149,7 @@
                       {%- endif -%}
                     </div>
                   {%- when 'image' -%}
-                    <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
+                    {% comment %} <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
                       {%- if block.settings.image != blank -%}
                         {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
                         <div
@@ -154,12 +168,17 @@
                       {%- else -%}
                         {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
                       {%- endif -%}
+                    </div> {% endcomment %}
+                    <div class="cu-img-text">
+                      <P>{{ block.settings.heading_text }}</P>
                     </div>
                 {%- endcase -%}
               </div>
             {%- endfor -%}
           </div>
         {%- endif -%}
+
+        </div>
 
         <div
           class="footer-block--newsletter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -253,12 +272,12 @@
   {%- endif -%}
 
   <div
-    class="footer__content-bottom{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    class="page-width footer__content-bottom{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     {% if settings.animations_reveal_on_scroll %}
       data-cascade
     {% endif %}
   >
-    <div class="footer__content-bottom-wrapper page-width">
+    <div class="footer__content-bottom-wrapper">
       <div class="footer__column footer__localization isolate">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
           <localization-form>
@@ -298,21 +317,21 @@
           </div>
         {% endif %}
         {% comment %}
-        {%- if section.settings.payment_enable -%}
-          <div class="footer__payment">
-            <ul class="list list-payment" role="list">
-              {%- for type in shop.enabled_payment_types -%}
-                <li class="list-payment__item">
-                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                </li>
-              {%- endfor -%}
-            </ul>
-          </div>
-        {%- endif -%}
+          {%- if section.settings.payment_enable -%}
+            <div class="footer__payment">
+              <ul class="list list-payment" role="list">
+                {%- for type in shop.enabled_payment_types -%}
+                  <li class="list-payment__item">
+                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
         {% endcomment %}
       </div>
     </div>
-    <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
+    <div class="footer__content-bottom-wrapper{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
       <div class="footer__copyright caption">
         <small class="copyright__content"
           >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
@@ -366,6 +385,11 @@
       "name": "t:sections.footer.blocks.brand_information.name",
       "settings": [
         {
+          "type": "text",
+          "id": "brand_heading",
+          "label": "Brand Heading"
+        },
+        {
           "type": "paragraph",
           "content": "t:sections.footer.blocks.brand_information.settings.paragraph.content"
         },
@@ -395,47 +419,6 @@
           "label": "t:sections.footer.blocks.text.settings.subtext.label"
         }
       ]
-    },
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "range",
-          "id": "image_width",
-          "min": 50,
-          "max": 550,
-          "step": 5,
-          "unit": "px",
-          "label": "Width",
-          "default": 100
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Alignment",
-          "options": [
-            {
-              "value": "",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "center"
-        }
-      ]
     }
   ],
   "settings": [
@@ -444,6 +427,16 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text"
     },
     {
       "type": "header",
@@ -558,3 +551,115 @@
   }
 }
 {% endschema %}
+
+<style>
+  .custom-footer .footer__content-bottom {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 15px;
+  }
+  .custom-footer .footer__blocks-wrapper .footer-block .footer-block__details-content {
+    flex-direction: column;
+  }
+  .custom-footer .footer__blocks-wrapper .footer-block .footer-block__details-content li {
+    margin-right: 0 !important;
+  }
+  .custom-footer .footer__blocks-wrapper .footer-block .footer-block__details-content li a {
+    padding: 0;
+    font-weight: 400;
+    font-size: clamp(16px, 0.3vw + 13px, 18px) !important;
+    line-height: 100%;
+    text-transform: capitalize;
+    font-family: Barlow Condensed;
+    color: rgba(var(--color-foreground));
+  }
+  .custom-footer .footer__content-top .footer__blocks-wrapper .footer-block .footer-block__brand-info .footer-block-brand-text h2 {
+    margin: 0;
+  }
+  .footer-block__image-wrapper img {
+    display: block;
+    height: auto;
+    max-width: 220px;
+    width: 100%;
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block .custom-flogo-text {
+    width: 50%;
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block {
+    display: flex;
+    padding-top: 30px;
+    justify-content: space-between;
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block .custom-flogo-text p {
+    margin: 0;
+    width: 100%;
+    max-width: 425px;
+    line-height: 28px;
+    color: rgba(var(--color-foreground));
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper .footer-block .footer-block__brand-info .footer-block-brand-text h5, 
+  .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper .footer-block h5 {
+    margin: 0;
+    font-family: Barlow Condensed;
+    font-weight: 600;
+    line-height: 100%;
+    margin-bottom: 0px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px !important;
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper .footer-block {
+    width: calc((33.33% - 20px) / 3) !important;
+  }
+  .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper .footer-block .footer-block__details-content p a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Barlow Condensed';
+    font-weight: 400;
+    font-size: clamp(16px, 0.3vw + 13px, 18px) !important;
+    line-height: 100%;
+    color: rgba(var(--color-foreground));
+  }
+  .footer__list-social .list-social__item .list-social__link {
+    border: 1px solid #57A014;
+    border-radius: 100%;
+  }
+  .custom-footer .footer__content-bottom .footer__content-bottom-wrapper .caption {
+    font-size: clamp(16px, 0.3vw + 13px, 18px) !important;
+    color: rgba(var(--color-foreground));
+  }
+
+  @media screen and (max-width: 1024px) { 
+    .custom-footer .footer__content-top .custom-footer-justify-block{
+      flex-wrap: wrap;
+    }
+    .custom-footer .footer__content-top .custom-footer-justify-block .custom-flogo-text {
+      width: 100%;
+    }
+    .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper {
+      width: 100%;
+      padding-top: 10px;
+    }
+  }
+
+  @media screen and (max-width: 767px) { 
+    .custom-footer .footer__content-top .custom-footer-justify-block .footer__blocks-wrapper .footer-block{
+      width: 100% !important;
+    }
+    .footer__localization:empty+.footer__column--info {
+    align-items: center;
+    }
+    .footer__content-bottom-wrapper--center {
+      justify-content: center;
+    }
+    .custom-footer-block-content-img{
+    display: flex;
+    justify-content: center;
+    }
+  }
+</style>

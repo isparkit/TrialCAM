@@ -53,6 +53,7 @@
         "announcement_itFc8c",
         "announcement_cexaGg"
       ],
+      "disabled": true,
       "settings": {
         "background_color": "#000000",
         "text_color": "#ffffff",
@@ -111,9 +112,10 @@
         "announcement_k7GUKc",
         "announcement_Yw8R7p"
       ],
+      "disabled": true,
       "name": "Custom Announcement Bar",
       "settings": {
-        "background_color": "#000000",
+        "background_color": "#253237",
         "text_color": "#ffffff",
         "icon_color": "#ffffff",
         "padding_top": "none",
@@ -148,15 +150,6 @@
     },
     "17583071798c6b5d23": {
       "type": "apps",
-      "blocks": {
-        "kwik_booster_kwik_booster_gcCpMJ": {
-          "type": "shopify://apps/kwik-booster/blocks/kwik-booster/fc61c79e-84cc-43aa-96d7-3c14109f275c",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "kwik_booster_kwik_booster_gcCpMJ"
-      ],
       "settings": {
         "include_margins": true
       }
