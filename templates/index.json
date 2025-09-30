@@ -674,7 +674,7 @@
         "testimonial_7cdyEW": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/Frame_1.png",
+            "rating": 2,
             "slide_title": "Genial til stories og reels",
             "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
             "customer_name": "Kasper V."
@@ -683,7 +683,7 @@
         "testimonial_A8BTeW": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/Frame_1.png",
+            "rating": 5,
             "slide_title": "Genial til stories og reels",
             "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
             "customer_name": "Kasper V."
@@ -692,7 +692,7 @@
         "testimonial_WTMQtc": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/Frame_1.png",
+            "rating": 5,
             "slide_title": "Genial til stories og reels",
             "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
             "customer_name": "Kasper V."
@@ -701,7 +701,7 @@
         "testimonial_HcmaDa": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/Frame_1.png",
+            "rating": 5,
             "slide_title": "Genial til stories og reels",
             "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
             "customer_name": "Kasper V."
@@ -710,7 +710,7 @@
         "testimonial_WyfjbX": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/Frame_1.png",
+            "rating": 5,
             "slide_title": "Genial til stories og reels",
             "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
             "customer_name": "Kasper V."
@@ -719,7 +719,7 @@
         "testimonial_ahbbwf": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/Frame_1.png",
+            "rating": 5,
             "slide_title": "Genial til stories og reels",
             "slide_content": "Elsker hvor nemt det er at smide klip op på Instagram direkte.",
             "customer_name": "Kasper V."

@@ -10,7 +10,29 @@
             <div class="testimonial-slide swiper-slide">
               {% if block.settings.image != blank %}
                 <div class="testimonial-image">
-                  <img src="{{ block.settings.image | image_url: width: 100 }}" alt="testimonial logo">
+                  {% comment %} <img src="{{ block.settings.image | image_url: width: 100 }}" alt="testimonial logo"> {% endcomment %}
+                  <div class="custom-stars">
+                    {% assign rating = block.settings.rating | plus: 0 %}
+                    {% assign full_stars = rating | floor %}
+                    {% assign has_half_star = rating | modulo: 1 %}
+
+                    {% for i in (1..full_stars) %}
+                      {% render 'review-star-svg', color: '#00b67a' %}
+                    {% endfor %}
+
+                    {% if has_half_star > 0 %}
+                      {% render 'review-star-svg', color: 'half' %}
+                    {% endif %}
+
+                    {% assign remaining_stars = 5 | minus: full_stars %}
+                    {% if has_half_star > 0 %}
+                      {% assign remaining_stars = remaining_stars | minus: 1 %}
+                    {% endif %}
+
+                    {% for i in (1..remaining_stars) %}
+                      {% render 'review-star-svg', color: '#ccc' %}
+                    {% endfor %}
+                  </div>
                 </div>
               {% endif %}
 
@@ -50,6 +72,15 @@
       "type": "testimonial",
       "name": "Testimonial",
       "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 0,
+          "max": 5,
+          "step": 0.5,
+          "default": 5
+        },
         {
           "type": "image_picker",
           "id": "image",

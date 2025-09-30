@@ -1,0 +1,31 @@
+{% if color == 'half' %}
+  <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="halfFill" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="50%" stop-color="#00b67a"/>
+        <stop offset="50%" stop-color="#ccc"/>
+      </linearGradient>
+    </defs>
+    <rect width="32" height="32" fill="url(#halfFill)"/>
+    <g clip-path="url(#clip0)">
+      <path d="M9.2 27L16 21.8L22.8 27L20.2 18.6L27 13.4H18.6L16 5L13.4 13.4H5L11.8 18.6L9.2 27Z" fill="#fff"/>
+    </g>
+    <defs>
+      <clipPath id="clip0">
+        <rect width="22" height="22" transform="translate(5 5)"/>
+      </clipPath>
+    </defs>
+  </svg>
+{% else %}
+  <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" fill="{{ color }}"/>
+    <g clip-path="url(#clip0)">
+      <path d="M9.2 27L16 21.8L22.8 27L20.2 18.6L27 13.4H18.6L16 5L13.4 13.4H5L11.8 18.6L9.2 27Z" fill="#fff"/>
+    </g>
+    <defs>
+      <clipPath id="clip0">
+        <rect width="22" height="22" transform="translate(5 5)"/>
+      </clipPath>
+    </defs>
+  </svg>
+{% endif %}
