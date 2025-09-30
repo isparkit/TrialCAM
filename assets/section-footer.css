@@ -7,7 +7,7 @@
 }
 
 .footer__content-top {
-  padding-bottom: 3rem;
+  padding-bottom: 40px;
   display: block;
 }
 
@@ -55,7 +55,7 @@
 
 .footer__content-bottom {
   /* border-top: solid 0.1rem ; */
-  border-top: 1px solid #57A01499;
+  border-top: 1px solid #57A01499 !important;
   padding-top: 3rem;
 }
 

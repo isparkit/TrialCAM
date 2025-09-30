@@ -140,6 +140,19 @@
           </h2>
         {%- endif -%}
         
+        <div class="custom-swiper-collection-btn">
+        <div class="swiper-button-next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+          <path d="M7.92883 0.568014C8.31926 0.177588 8.95235 0.177786 9.34289 0.568014L15.7071 6.93227C16.0977 7.3228 16.0977 7.95581 15.7071 8.34633L9.34289 14.7106C8.95235 15.1009 8.31926 15.101 7.92883 14.7106C7.53841 14.3202 7.5386 13.6871 7.92883 13.2966L12.586 8.6393H1.00012C0.447837 8.6393 0.00012207 8.19159 0.00012207 7.6393C0.00012207 7.08702 0.447837 6.6393 1.00012 6.6393H12.586L7.92883 1.98208C7.5386 1.59153 7.53841 0.958439 7.92883 0.568014Z" fill="white"/>
+          </svg> 
+        </div>
+        <div class="swiper-button-prev">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+          <path d="M8.07141 0.568014C7.68098 0.177588 7.04789 0.177786 6.65735 0.568014L0.293122 6.93227C-0.097477 7.3228 -0.097477 7.95581 0.293122 8.34633L6.65735 14.7106C7.04789 15.1009 7.68098 15.101 8.07141 14.7106C8.46183 14.3202 8.46164 13.6871 8.07141 13.2966L3.41422 8.6393H15.0001C15.5524 8.6393 16.0001 8.19159 16.0001 7.6393C16.0001 7.08702 15.5524 6.6393 15.0001 6.6393H3.41422L8.07141 1.98208C8.46164 1.59153 8.46183 0.958439 8.07141 0.568014Z" fill="white"/>
+          </svg>
+        </div>
+        </div>
+
         {%- if section.settings.show_view_all and more_in_collection -%}
           <div class="collection__view-all-link{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
             <a
@@ -178,7 +191,7 @@
         role="list"
         aria-label="{{ 'general.slider.name' | t }}"
       >
-        {% if show_desktop_slider %}<div class="swiper-wrapper">{% endif %}
+        <div class="swiper-wrapper">
         {% assign skip_card_product_styles = false %}
         {%- if section.settings.collection.products.size > 0 -%}
           {% paginate section.settings.collection.products by section.settings.products_to_show %}
@@ -238,9 +251,13 @@
             </li>
           {%- endfor -%}
         {%- endif -%}
-      {% if show_desktop_slider %}</div>{% endif %}
+      </div>
+
+      {% comment %} <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div> {% endcomment %}
+
       </ul>
-      {%- if show_mobile_slider or show_desktop_slider -%}
+      {% comment %} {%- if show_mobile_slider or show_desktop_slider -%}
         {% if section.settings.show_slider_arrows %}
         <div class="slider-buttons">
           <button
@@ -294,7 +311,7 @@
           {% endfor %}
         </div>
         {% endif %}
-      {%- endif -%}
+      {%- endif -%} {% endcomment %}
     </slider-component>
     {% if section.settings.full_width == false %}
     </div>
@@ -744,3 +761,68 @@
   ]
 }
 {% endschema %}
+
+<!-- Swiper CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<style>
+.custom-featured-collection-slider {
+  padding: 20px 0;
+}
+.custom-featured-collection-slider .swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  new Swiper(".custom-featured-collection-slider", {
+    slidesPerView: 2,
+    spaceBetween: 20,
+    loop: false,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 2,
+      }
+    }
+  });
+});
+</script>
+
+<style>
+  .product-grid .product-card-wrapper .card{
+    background-color: #EEF5E7 !important;
+  }
+  .collection__title-with-link .custom-swiper-collection-btn .swiper-button-next, 
+  .collection__title-with-link .custom-swiper-collection-btn .swiper-button-prev {
+    display: block !important;
+    background-color: #57A014;
+    width: 36px;
+    height: 36px;
+  }
+  .collection__title-with-link .custom-swiper-collection-btn .swiper-button-prev:after,
+  .collection__title-with-link .custom-swiper-collection-btn .swiper-button-next:after {
+    display: none;
+  }
+
+  .collection__title-with-link {
+    position: relative;
+  }
+  .collection__title-with-link .custom-swiper-collection-btn {
+    position: absolute;
+    right: 0;
+  }
+</style>

@@ -191,9 +191,11 @@
         "image_1": "shopify://shop_images/image_2_3.png",
         "image_2": "shopify://shop_images/image_3.png",
         "heading": "Perfekt til aktive livsstile",
-        "subtext": "<p>TrailCamTM designet til at følge dig uden at være i vejen. Den lette, håndholdte størrelse og trådløse kontrol gør det nemt at fange øjeblikket – helt uden besvær.<br/>Klar til at optage dit næste eventyr?</p>",
+        "subtext": "<p><strong>TrailCamTM</strong> designet til at følge dig uden at være i vejen. Den lette, håndholdte størrelse og trådløse kontrol gør det nemt at fange øjeblikket – helt uden besvær.</p><p>Klar til at optage dit næste eventyr?</p>",
         "button_label": "Se hvor let det er",
-        "button_link": "#"
+        "button_link": "#",
+        "padding_top": 100,
+        "padding_bottom": 52
       }
     },
     "featured_collection_Nt78cC": {
@@ -202,11 +204,11 @@
       "settings": {
         "collection": "tilbehor",
         "products_to_show": 4,
-        "title": "Udvalgt kollektion",
+        "title": "Where does it come from Lorem Ipsum",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "columns_desktop": 3,
+        "columns_desktop": 2,
         "enable_desktop_slider": true,
         "show_slider_arrows": true,
         "show_slider_dots": true,
@@ -221,7 +223,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -239,9 +241,11 @@
         "image_1": "shopify://shop_images/image_2.png",
         "image_2": "shopify://shop_images/22cb46d945a9aa538fef1f920978c3fe6ca42e9d_1.png",
         "heading": "Under vand. Over skyhøje forventninger.",
-        "subtext": "<p>TrailCamTM er vandtæt og skabt til action. Tag den med i poolen, havet eller på regnvejrsture uden bekymringer. Med et klik deler du optagelsen direkte i din app.<br/>Klar til at optage dit næste eventyr?</p>",
+        "subtext": "<p><strong>TrailCamTM</strong> er vandtæt og skabt til action. Tag den med i poolen, havet eller på regnvejrsture uden bekymringer. Med et klik deler du optagelsen direkte i din app.</p><p>Klar til at optage dit næste eventyr?</p>",
         "button_label": "Tag TrailCam™ med på tur",
-        "button_link": "#"
+        "button_link": "#",
+        "padding_top": 100,
+        "padding_bottom": 52
       }
     },
     "collapsible_content_Wwe6dP": {
