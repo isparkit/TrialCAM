@@ -178,11 +178,12 @@
         role="list"
         aria-label="{{ 'general.slider.name' | t }}"
       >
+        {% if show_desktop_slider %}<div class="swiper-wrapper">{% endif %}
         {% assign skip_card_product_styles = false %}
-
         {%- if section.settings.collection.products.size > 0 -%}
           {% paginate section.settings.collection.products by section.settings.products_to_show %}
             {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+              <div class="swiper-slide">
               <li
                 id="Slide-{{ section.id }}-{{ forloop.index }}"
                 class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -205,6 +206,7 @@
                   card_content_background: section.settings.card_content_background
                 %}
               </li>
+            </div>
               {%- assign skip_card_product_styles = true -%}
             {%- endfor -%}
           {% endpaginate %}
@@ -236,6 +238,7 @@
             </li>
           {%- endfor -%}
         {%- endif -%}
+      {% if show_desktop_slider %}</div>{% endif %}
       </ul>
       {%- if show_mobile_slider or show_desktop_slider -%}
         {% if section.settings.show_slider_arrows %}
