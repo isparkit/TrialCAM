@@ -14,13 +14,13 @@
       padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
     }
   }
-  
+
   .collapsible-section {
     {% if section.settings.background != blank %}
       background-color: {{ section.settings.background }};
     {% endif %}
   }
-  
+
   .collapsible-section__heading {
     margin-top: 0;
     margin-bottom: {{ section.settings.heading_spacing }}px;
@@ -31,14 +31,14 @@
       color: {{ section.settings.heading_color }};
     {% endif %}
   }
-  
+
   .collapsible-section__container {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     align-items: center;
   }
-  
+
   {% if section.settings.show_images == false %}
     .collapsible-section__content {
       width: 100%;
@@ -52,7 +52,7 @@
       position: relative;
       text-align: center;
     }
-    
+
     .collapsible-section__content {
       flex: 1.5;
       min-width: 300px;
@@ -72,26 +72,26 @@
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     {% endif %}
   }
-  
+
   .collapsible-section__image:nth-child(2) {
     position: absolute;
     right: 0;
     top: 0;
     max-width: 90px;
   }
-  
+
   .collapsible-section__image:nth-child(3) {
     position: absolute;
     left: 0;
     bottom: 0;
     max-width: 90px;
   }
-  
-  
+
+
   .collapsible-section__accordion {
     margin-bottom: 30px;
   }
-  
+
   .accordion__button {
     background: {{ section.settings.accordion_background | default: '#FFFFFF' }};
     cursor: pointer;
@@ -106,11 +106,11 @@
     /* margin-bottom: 10px; */
     transition: background 0.3s;
   }
-  
+
   .accordion__button:hover {
     background: {{ section.settings.accordion_hover_background | default: '#F8F8F8' }};
   }
-  
+
   .accordion__button h3 {
     margin: 0;
     font-size: 16px;
@@ -119,18 +119,18 @@
       color: {{ section.settings.accordion_title_color }};
     {% endif %}
   }
-  
+
   .accordion__button .icon {
     width: 1.5rem;
     height: 1.5rem;
     transition: transform 0.3s;
     display: flex;
   }
-  
+
   .accordion__button[aria-expanded="true"] .icon {
     transform: rotate(180deg);
   }
-  
+
   .accordion__panel {
     overflow: hidden;
     height: 0;
@@ -139,7 +139,7 @@
     padding: 0 1.5rem;
     margin-bottom: 10px;
   }
-  
+
   .accordion__panel[aria-hidden="false"] {
     height: auto;
     opacity: 1;
@@ -148,19 +148,19 @@
       color: {{ section.settings.accordion_content_color }};
     {% endif %}
   }
-  
+
   .collapsible-section__footer {
     text-align: center;
     margin-top: 20px;
   }
-  
+
   .collapsible-section__footer-text {
     {% if section.settings.footer_text_color != blank %}
       color: {{ section.settings.footer_text_color }};
     {% endif %}
     margin-bottom: 10px;
   }
-  
+
   .collapsible-section__footer-link {
     display: inline-block;
     {% if section.settings.footer_link_color != blank %}
@@ -169,7 +169,7 @@
     text-decoration: underline;
     color: inherit;
   }
-  
+
   @media screen and (max-width: 767px) {
     .collapsible-section__images {
       width: 100%;
@@ -178,39 +178,49 @@
     .collapsible-section__heading {
       font-size: calc({{ section.settings.heading_size }}px * 0.8);
     }
-    
+
     .collapsible-section__images {
       flex: 1 0 100%;
       order: 1;
       height: {{ section.settings.images_height_mobile }}px;
     }
-    
+
     .collapsible-section__content {
       flex: 1 0 100%;
       order: 2;
     }
-    
+
     .collapsible-section__image {
       max-height: {{ section.settings.image_height_mobile }}px;
     }
-    
+
 
   }
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="collapsible-section section-{{ section.id }}-padding" style="{% if section.settings.background != blank %}background-color: {{ section.settings.background }};{% endif %}">
+  <div
+    class="custom-accrodian collapsible-section section-{{ section.id }}-padding"
+    style="{% if section.settings.background != blank %}background-color: {{ section.settings.background }};{% endif %}"
+  >
     <div class="page-width">
       {% unless section.settings.show_images and section.settings.heading_position == 'in_content' %}
-        <h2 class="collapsible-section__heading" style="
-          margin-bottom: {{ section.settings.heading_spacing }}px;
-          font-size: {{ section.settings.heading_size }}px;
-          text-align: {{ section.settings.heading_alignment }};
-          font-weight: {{ section.settings.heading_weight }};
-          {% if section.settings.heading_color != blank %}color: {{ section.settings.heading_color }};{% endif %}
-        ">{{ section.settings.heading }}</h2>
+        {% comment %}
+          <h2
+            class=""
+            style="
+              margin-bottom: {{ section.settings.heading_spacing }}px;
+              font-size: {{ section.settings.heading_size }}px;
+              text-align: {{ section.settings.heading_alignment }};
+              font-weight: {{ section.settings.heading_weight }};
+              {% if section.settings.heading_color != blank %}color: {{ section.settings.heading_color }};{% endif %}
+            "
+          >
+            {{ section.settings.heading }}
+          </h2>
+        {% endcomment %}
       {% endunless %}
-      
+
       <div class="collapsible-section__container">
         {% if section.settings.show_images %}
           <div class="collapsible-section__images" style="height: {{ section.settings.images_height }}px;">
@@ -220,8 +230,8 @@
                 {% assign top_position = forloop.index0 | times: image_offset %}
                 {% assign left_position = forloop.index0 | times: image_offset %}
                 {% assign z_index = 3 | minus: forloop.index0 %}
-                
-                <img 
+
+                <img
                   src="{{ block.settings.image | image_url: width: 500 }}"
                   loading="lazy"
                   width="500"
@@ -238,19 +248,38 @@
             {% endfor %}
           </div>
         {% endif %}
-        
-        <div class="collapsible-section__content" {% if section.settings.show_images == false %}style="width: 100%; margin: 0 auto; max-width: {{ section.settings.content_width }}px;"{% endif %}>
-          {% if section.settings.show_images and section.settings.heading_position == 'in_content' %}
-            <h2 class="collapsible-section__heading" style="
-              margin-bottom: {{ section.settings.heading_spacing }}px;
-              font-size: {{ section.settings.heading_size }}px;
-              text-align: {{ section.settings.heading_alignment }};
-              font-weight: {{ section.settings.heading_weight }};
-              {% if section.settings.heading_color != blank %}color: {{ section.settings.heading_color }};{% endif %}
-            ">{{ section.settings.heading }}</h2>
+
+        <div
+          class="collapsible-section__content"
+          {% if section.settings.show_images == false %}
+            style="width: 100%; margin: 0 auto; max-width: {{ section.settings.content_width }}px;"
           {% endif %}
-          
+        >
+          {% if section.settings.show_images and section.settings.heading_position == 'in_content' %}
+            {% comment %}
+              <h2 class="collapsible-section__heading" style="
+                margin-bottom: {{ section.settings.heading_spacing }}px;
+                font-size: {{ section.settings.heading_size }}px;
+                text-align: {{ section.settings.heading_alignment }};
+                font-weight: {{ section.settings.heading_weight }};
+                {% if section.settings.heading_color != blank %}color: {{ section.settings.heading_color }};{% endif %}
+              ">{{ section.settings.heading }}</h2>
+            {% endcomment %}
+          {% endif %}
+
           <collapsible-accordion class="collapsible-section__accordion">
+            <h2
+              class="collapsible-section__heading"
+              style="
+                margin-bottom: {{ section.settings.heading_spacing }}px;
+                font-size: {{ section.settings.heading_size }}px;
+                text-align: {{ section.settings.heading_alignment }};
+                font-weight: {{ section.settings.heading_weight }};
+                {% if section.settings.heading_color != blank %}color: {{ section.settings.heading_color }};{% endif %}
+              "
+            >
+              {{ section.settings.heading }}
+            </h2>
             {% for block in section.blocks %}
               {% if block.type == 'collapsible_row' %}
                 <details
@@ -258,21 +287,39 @@
                   class="accordion__item"
                   {{ block.shopify_attributes }}
                 >
-                  <summary class="accordion__button" style="
-                    background: {{ section.settings.accordion_background | default: '#FFFFFF' }};
-                    border: 1px solid {{ section.settings.accordion_border_color | default: '#EEEEEE' }};
-                    border-radius: {{ section.settings.accordion_radius }}px;
-                  ">
-                    <h3 style="{% if section.settings.accordion_title_color != blank %}color: {{ section.settings.accordion_title_color }};{% endif %}">
+                  <summary
+                    class="accordion__button"
+                    style="
+                      background: {{ section.settings.accordion_background | default: '#FFFFFF' }};
+                      border: 1px solid {{ section.settings.accordion_border_color | default: '#EEEEEE' }};
+                      border-radius: {{ section.settings.accordion_radius }}px;
+                    "
+                  >
+                    <h6 style="{% if section.settings.accordion_title_color != blank %}color: {{ section.settings.accordion_title_color }};{% endif %}">
                       {{ block.settings.heading | default: block.settings.page.title }}
-                    </h3>
+                    </h6>
                     <span class="icon">
-                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                        <path d="M19 8.5L12 15.5L5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      {% comment %}
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path d="M19 8.5L12 15.5L5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      {% endcomment %}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                        <rect x="0.85791" y="0.479004" width="34.1421" height="34.1421" rx="17.0711" fill="#57A014"/>
+                        <path d="M23.76 16.6733C24.2443 16.6733 24.6368 17.0659 24.6368 17.5501C24.6367 18.0343 24.2443 18.4269 23.76 18.4269L18.8058 18.4265V23.3812C18.8057 23.8654 18.4132 24.258 17.929 24.258C17.4447 24.258 17.0522 23.8654 17.0521 23.3812V18.4265L12.0979 18.4269C11.6136 18.4269 11.2212 18.0343 11.2211 17.5501C11.2211 17.0659 11.6136 16.6733 12.0979 16.6733L17.0521 16.6728L17.0521 11.719C17.0521 11.2347 17.4447 10.8422 17.929 10.8422C18.4133 10.8422 18.8058 11.2347 18.8058 11.719L18.8058 16.6728L23.76 16.6733Z" fill="black"/>
                       </svg>
                     </span>
                   </summary>
-                  <div class="accordion__panel rte" style="{% if section.settings.accordion_content_color != blank %}color: {{ section.settings.accordion_content_color }};{% endif %}">
+                  <div
+                    class="accordion__panel rte"
+                    style="{% if section.settings.accordion_content_color != blank %}color: {{ section.settings.accordion_content_color }};{% endif %}"
+                  >
                     {% if block.settings.row_content != blank %}
                       {{ block.settings.row_content }}
                     {% endif %}
@@ -284,17 +331,27 @@
               {% endif %}
             {% endfor %}
           </collapsible-accordion>
-          
-          {% if section.settings.footer_text != blank and section.settings.footer_link_text != blank and section.settings.footer_link_url != blank %}
+
+          {% if section.settings.footer_text != blank
+            and section.settings.footer_link_text != blank
+            and section.settings.footer_link_url != blank
+          %}
             <div class="collapsible-section__footer">
               {% if section.settings.footer_text != blank %}
-                <p class="collapsible-section__footer-text" style="{% if section.settings.footer_text_color != blank %}color: {{ section.settings.footer_text_color }};{% endif %}">
+                <p
+                  class="collapsible-section__footer-text"
+                  style="{% if section.settings.footer_text_color != blank %}color: {{ section.settings.footer_text_color }};{% endif %}"
+                >
                   {{ section.settings.footer_text }}
                 </p>
               {% endif %}
-              
+
               {% if section.settings.footer_link_text != blank and section.settings.footer_link_url != blank %}
-                <a href="{{ section.settings.footer_link_url }}" class="collapsible-section__footer-link" style="{% if section.settings.footer_link_color != blank %}color: {{ section.settings.footer_link_color }};{% endif %}">
+                <a
+                  href="{{ section.settings.footer_link_url }}"
+                  class="collapsible-section__footer-link"
+                  style="{% if section.settings.footer_link_color != blank %}color: {{ section.settings.footer_link_color }};{% endif %}"
+                >
                   {{ section.settings.footer_link_text }}
                 </a>
               {% endif %}
@@ -312,18 +369,18 @@
     .collapsible-section__heading {
       font-size: calc({{ section.settings.heading_size }}px * 0.8) !important;
     }
-    
+
     .collapsible-section__images {
       flex: 1 0 100%;
       order: 1;
       height: {{ section.settings.images_height_mobile }}px !important;
     }
-    
+
     .collapsible-section__content {
       flex: 1 0 100%;
       order: 2;
     }
-    
+
     .collapsible-section__image {
       max-height: {{ section.settings.image_height_mobile }}px !important;
     }
@@ -446,7 +503,7 @@
       "type": "header",
       "content": "Image Settings"
     },
-    
+
     {
       "type": "range",
       "id": "image_radius",
@@ -680,3 +737,44 @@
   ]
 }
 {% endschema %}
+
+<style>
+  .custom-accrodian .collapsible-section__heading {
+    text-align: start !important;
+    font-weight: 700 !important;
+    line-height: 1em;
+    letter-spacing: 0px;
+    color: #000000;
+  }
+  .custom-accrodian .collapsible-section__heading {
+    text-align: start !important;
+  }
+  .custom-accrodian .collapsible-section__images {
+    border: 1px dashed #57a014;
+    padding: 15px;
+  }
+  .custom-accrodian .accordion__item {
+    border: 1px dashed #57a014 !important;
+  }
+  .custom-accrodian details[open] .accordion__panel {
+    border-top: 1px dashed #57a014 !important;
+  }
+  .custom-accrodian .accordion__button h6 {
+    margin: 0px !important;
+    font-weight: 700;
+    letter-spacing: 0px;
+    color: #000000;
+    line-height: 26px;
+  }
+  .custom-accrodian .accordion__panel p {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Roboto';
+    color: #000000;
+    line-height: 24px;
+    letter-spacing: 0px;
+  }
+  .custom-accrodian .collapsible-section__container {
+    gap: 40px !important;
+  }
+</style>
