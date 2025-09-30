@@ -83,49 +83,6 @@
         "divider_offset": 0
       }
     },
-    "slideshow_YhH3T7": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_ierhKM": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/Trailcam.dk_produktvideo1_1x1.mov",
-            "video_mobile": "shopify://files/videos/Trailcam.dk_produktvideo1_1x1.mov",
-            "image_overlay_opacity": 30,
-            "heading": "OPTAG DET, SOM INGEN ANDRE SER",
-            "heading_size": "h1",
-            "subheading": "<strong>Fang virkeligheden fra din egen vinkel – helt tæt på</strong>",
-            "button_label": "→ KØB NU",
-            "link": "shopify://products/trailcam™",
-            "button_style_secondary": false,
-            "show_text_box": false,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": "scheme-4"
-          }
-        }
-      },
-      "block_order": [
-        "slide_ierhKM"
-      ],
-      "disabled": true,
-      "name": "t:sections.slideshow.presets.name",
-      "settings": {
-        "tp_image": "shopify://shop_images/image_6.png",
-        "tp_text": "Fremragende",
-        "tp_link": "",
-        "layout": "full_bleed",
-        "slide_height": "large",
-        "slide_height_mobile": "small",
-        "slider_visual": "counter",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "image_behavior": "none",
-        "show_text_below": false,
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
     "icon_title_and_description_N4jf4R": {
       "type": "icon-title-and-description",
       "blocks": {
@@ -177,307 +134,6 @@
         "enable_arrows": false,
         "enable_dots": false,
         "auto_play": false
-      }
-    },
-    "image_with_text_WtKVDV": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_dbgeWH": {
-          "type": "heading",
-          "settings": {
-            "heading": "Perfekt til aktive livsstile",
-            "heading_size": "h1"
-          }
-        },
-        "text_kbhtLL": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>TrailCam™</strong> designet til at følge dig uden at være i vejen. Den lette, håndholdte størrelse og trådløse kontrol gør det nemt at fange øjeblikket – helt uden besvær.</p>",
-            "text_style": "body"
-          }
-        },
-        "caption_kAzzYh": {
-          "type": "caption",
-          "settings": {
-            "caption": "Klar til at optage dit næste eventyr?",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
-          }
-        },
-        "button_BMx4aX": {
-          "type": "button",
-          "settings": {
-            "button_label": "Se hvor let det er →",
-            "button_link": "shopify://products/trailcam™",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_dbgeWH",
-        "text_kbhtLL",
-        "caption_kAzzYh",
-        "button_BMx4aX"
-      ],
-      "disabled": true,
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "media_type": "image",
-        "image": "shopify://shop_images/DSC01335-1x1.png",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "external_video_url": "",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "container_radius": 14,
-        "image_radius": 14,
-        "image_behavior": "none",
-        "show_social_links": false,
-        "facebook_url": "",
-        "instagram_url": "",
-        "twitter_url": "",
-        "social_position": "flex-start",
-        "social_icon_size": 24,
-        "social_icon_color": "#000000",
-        "custom_font": "",
-        "custom_font_size": 36,
-        "custom_font_weight": "400",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "background_color": "",
-        "text_color": "",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36,
-        "enable_video_autoplay": true,
-        "enable_video_loop": true,
-        "enable_video_muted": true,
-        "show_divider": false,
-        "divider_color": "#dddddd",
-        "divider_spacing": 10,
-        "divider_offset": 0
-      }
-    },
-    "image_with_text_6QkdcQ": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_HzAEVz": {
-          "type": "heading",
-          "settings": {
-            "heading": "Under vand. Over skyhøje forventninger.",
-            "heading_size": "h1"
-          }
-        },
-        "text_6kCf4j": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>TrailCam™</strong> er vandtæt og skabt til action. Tag den med i poolen, havet eller på regnvejrsture uden bekymringer. Med et klik deler du optagelsen direkte i din app.</p>",
-            "text_style": "body"
-          }
-        },
-        "caption_pcNDiD": {
-          "type": "caption",
-          "settings": {
-            "caption": "Klar til at optage dit næste eventyr?",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
-          }
-        },
-        "button_DKi7xR": {
-          "type": "button",
-          "settings": {
-            "button_label": "Tag TrailCam™ med på tur",
-            "button_link": "shopify://products/trailcam™",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_HzAEVz",
-        "text_6kCf4j",
-        "caption_pcNDiD",
-        "button_DKi7xR"
-      ],
-      "disabled": true,
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "media_type": "image",
-        "image": "shopify://shop_images/DSC01451-1x1.png",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "external_video_url": "",
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "container_radius": 22,
-        "image_radius": 18,
-        "image_behavior": "none",
-        "show_social_links": false,
-        "facebook_url": "",
-        "instagram_url": "",
-        "twitter_url": "",
-        "social_position": "flex-start",
-        "social_icon_size": 24,
-        "social_icon_color": "#000000",
-        "custom_font": "",
-        "custom_font_size": 36,
-        "custom_font_weight": "400",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "background_color": "",
-        "text_color": "",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-21a59f31-25d1-4af2-a305-adca26f0ffa7",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36,
-        "enable_video_autoplay": true,
-        "enable_video_loop": true,
-        "enable_video_muted": true,
-        "show_divider": false,
-        "divider_color": "#dddddd",
-        "divider_spacing": 10,
-        "divider_offset": 0
-      }
-    },
-    "feature_showcase_mqrCDH": {
-      "type": "feature-showcase",
-      "blocks": {
-        "heading_CdKYGw": {
-          "type": "heading",
-          "settings": {
-            "title": "Designet til at performe – uanset hvor du er",
-            "text": "<p>Funktioner, der gør en forskel.</p>"
-          }
-        },
-        "feature_hTqPb4": {
-          "type": "feature",
-          "settings": {
-            "icon_type": "image",
-            "icon": "droplet",
-            "custom_icon": "shopify://shop_images/Check_ring_light.svg",
-            "title": "App-styring i realtid",
-            "description": "<p>Start og stop optagelser, skift tilstande og overfør filer – direkte fra din smartphone.</p>"
-          }
-        },
-        "feature_3fBRRr": {
-          "type": "feature",
-          "settings": {
-            "icon_type": "image",
-            "icon": "shield",
-            "custom_icon": "shopify://shop_images/Check_ring_light.svg",
-            "title": "Lang batteritid",
-            "description": "<p>Flere timers optagelse uden afbrydelse – perfekt til længere ture.</p>"
-          }
-        },
-        "feature_iWxH4A": {
-          "type": "feature",
-          "settings": {
-            "icon_type": "image",
-            "icon": "leaf",
-            "custom_icon": "shopify://shop_images/Check_ring_light.svg",
-            "title": "Video i høj kvalitet",
-            "description": "<p>Optag knivskarpe videoer og billeder – både i dagslys og svagt lys.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_CdKYGw",
-        "feature_hTqPb4",
-        "feature_3fBRRr",
-        "feature_iWxH4A"
-      ],
-      "disabled": true,
-      "name": "Feature Showcase",
-      "settings": {
-        "image": "shopify://shop_images/DSC01426-1x1.png",
-        "layout": "image_first",
-        "desktop_image_width": "medium",
-        "height": "adapt",
-        "container_radius": 16,
-        "image_radius": 16,
-        "heading_position": "above",
-        "heading_alignment": "center",
-        "heading_size": 36,
-        "heading_weight": "600",
-        "heading_color": "",
-        "icon_position": "column",
-        "icon_size": 60,
-        "icon_color": "#000000",
-        "icon_bg_color": "#f5f5f5",
-        "title_size": 24,
-        "title_weight": "600",
-        "title_color": "",
-        "description_size": 16,
-        "description_color": "",
-        "background_color": "",
-        "text_color": "#000000",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36
-      }
-    },
-    "trustpilot_slider_VDGxmW": {
-      "type": "trustpilot-slider",
-      "blocks": {
-        "review_dfiF7d": {
-          "type": "review",
-          "settings": {
-            "title": "En gamechanger i min rengø!",
-            "review": "<p>Jeg har aldrig oplevet min sofa og seng føles så rene før. UV-lyset giver virkelig ro i sindet, især fordi jeg har små børn. Let at bruge og super effektiv!</p>",
-            "name": "Maria Jensen"
-          }
-        },
-        "review_JNKwUd": {
-          "type": "review",
-          "settings": {
-            "title": "Perfekt til allergikere",
-            "review": "<p>Jeg lider af stovallergy, og siden jeg begyndte at bruge denne støvsuger, har jeg mærket en stor forskel. HEPA-filtret gør underværker. Kan varmt anbefales!</p>",
-            "name": "Anders Nielsen"
-          }
-        },
-        "review_E67UdQ": {
-          "type": "review",
-          "settings": {
-            "title": "Overraskende kraftfuld!",
-            "review": "<p>Tænkte ikke, at en håndholdt støvsuger kunne være så effektiv. Den fjernede alt fra dyrehår til dybliggende støv i madrassen. Plus, den ser også flot ud.</p>",
-            "name": "Louise Petersen"
-          }
-        }
-      },
-      "block_order": [
-        "review_dfiF7d",
-        "review_JNKwUd",
-        "review_E67UdQ"
-      ],
-      "disabled": true,
-      "name": "Trustpilot Slider",
-      "settings": {
-        "desktop_slide": 3,
-        "mobile_slide": 2,
-        "autoplay": 0,
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36,
-        "color_scheme": "",
-        "show_arrows": true,
-        "show_dots": true,
-        "show_progress": false,
-        "show_read_more": true,
-        "heading": "Fremragende",
-        "trustpilot_stars": "shopify://shop_images/image_6.png",
-        "trustpilot_text": "4.6 stjerner | elsket af mange",
-        "trustpilot_logo": "shopify://shop_images/Trustpilot_Logo__2022_1_2.jpg",
-        "trustpilot_link": ""
       }
     },
     "custom_center_image_with_text_4FcHMC": {
@@ -538,6 +194,40 @@
         "subtext": "<p>TrailCamTM designet til at følge dig uden at være i vejen. Den lette, håndholdte størrelse og trådløse kontrol gør det nemt at fange øjeblikket – helt uden besvær.<br/>Klar til at optage dit næste eventyr?</p>",
         "button_label": "Se hvor let det er",
         "button_link": "#"
+      }
+    },
+    "featured_collection_Nt78cC": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "tilbehor",
+        "products_to_show": 4,
+        "title": "Udvalgt kollektion",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": true,
+        "show_slider_arrows": true,
+        "show_slider_dots": true,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "card_content_background": "#ffffff",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "image_border_radius": 0,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36
       }
     },
     "custom_image_with_text_gYVtpN": {
@@ -743,14 +433,10 @@
   },
   "order": [
     "image_with_text_GQdLiF",
-    "slideshow_YhH3T7",
     "icon_title_and_description_N4jf4R",
-    "image_with_text_WtKVDV",
-    "image_with_text_6QkdcQ",
-    "feature_showcase_mqrCDH",
-    "trustpilot_slider_VDGxmW",
     "custom_center_image_with_text_4FcHMC",
     "custom_image_with_text_JCCzTq",
+    "featured_collection_Nt78cC",
     "custom_image_with_text_gYVtpN",
     "collapsible_content_Wwe6dP",
     "custom_review_customer_JapjwQ"
