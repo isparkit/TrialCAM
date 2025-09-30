@@ -25,13 +25,13 @@
           "type": "text",
           "settings": {
             "heading": "Ring til os",
-            "subtext": "<p>+01 1234567891<br/><a href=\"#\" target=\"_blank\" title=\"#\">test@gamil.com</a></p>"
+            "subtext": "<p><a href=\"tel:+01 1234567891\" target=\"_blank\" title=\"tel:+01 1234567891\">+01 1234567891</a><br/><a href=\"#\" target=\"_blank\" title=\"#\">test@gamil.com</a></p>"
           }
         },
         "brand_information_CziLgz": {
           "type": "brand_information",
           "settings": {
-            "brand_heading": "",
+            "brand_heading": "Følg os",
             "show_social": true
           }
         }

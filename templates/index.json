@@ -219,6 +219,7 @@
         "caption_kAzzYh",
         "button_BMx4aX"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "media_type": "image",
@@ -302,6 +303,7 @@
         "caption_pcNDiD",
         "button_DKi7xR"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "media_type": "image",
@@ -392,6 +394,7 @@
         "feature_3fBRRr",
         "feature_iWxH4A"
       ],
+      "disabled": true,
       "name": "Feature Showcase",
       "settings": {
         "image": "shopify://shop_images/DSC01426-1x1.png",
@@ -455,6 +458,7 @@
         "review_JNKwUd",
         "review_E67UdQ"
       ],
+      "disabled": true,
       "name": "Trustpilot Slider",
       "settings": {
         "desktop_slide": 3,
@@ -557,6 +561,7 @@
         "collapsible_row_Xw7QMq",
         "collapsible_row_qFdq3j"
       ],
+      "disabled": true,
       "name": "Collapsible content",
       "settings": {
         "heading": "Spørgsmål? Vi har svar!",
@@ -639,8 +644,8 @@
       "settings": {
         "color_scheme": "background-1",
         "layout": "left",
-        "image_1": "shopify://shop_images/image1.png",
-        "image_2": "shopify://shop_images/image2_2.png",
+        "image_1": "shopify://shop_images/image_2_3.png",
+        "image_2": "shopify://shop_images/image_3.png",
         "heading": "Perfekt til aktive livsstile",
         "subtext": "<p>TrailCamTM designet til at følge dig uden at være i vejen. Den lette, håndholdte størrelse og trådløse kontrol gør det nemt at fange øjeblikket – helt uden besvær.<br/>Klar til at optage dit næste eventyr?</p>",
         "button_label": "Se hvor let det er",
@@ -653,12 +658,46 @@
       "settings": {
         "color_scheme": "background-1",
         "layout": "right",
-        "image_1": "shopify://shop_images/22cb46d945a9aa538fef1f920978c3fe6ca42e9d_1.png",
-        "image_2": "shopify://shop_images/b5afa6785f477edc3358964b66b18d00b5fd04cc_1.png",
+        "image_1": "shopify://shop_images/image_2.png",
+        "image_2": "shopify://shop_images/22cb46d945a9aa538fef1f920978c3fe6ca42e9d_1.png",
         "heading": "Under vand. Over skyhøje forventninger.",
         "subtext": "<p>TrailCamTM er vandtæt og skabt til action. Tag den med i poolen, havet eller på regnvejrsture uden bekymringer. Med et klik deler du optagelsen direkte i din app.<br/>Klar til at optage dit næste eventyr?</p>",
         "button_label": "Tag TrailCam™ med på tur",
         "button_link": "#"
+      }
+    },
+    "featured_collection_tkckPe": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "tilbehor",
+        "products_to_show": 4,
+        "title": "Where does it come from Lorem Ipsum",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 2,
+        "enable_desktop_slider": true,
+        "show_slider_arrows": true,
+        "show_slider_dots": true,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "card_content_background": "#ffffff",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "image_border_radius": 0,
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36
       }
     }
   },
@@ -673,6 +712,7 @@
     "collapsible_content_Wwe6dP",
     "custom_center_image_with_text_4FcHMC",
     "custom_image_with_text_JCCzTq",
-    "custom_image_with_text_gYVtpN"
+    "custom_image_with_text_gYVtpN",
+    "featured_collection_tkckPe"
   ]
 }
