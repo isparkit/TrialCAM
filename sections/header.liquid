@@ -722,4 +722,73 @@
     width: 20px !important;
     height: 20px !important;
   }
+  .custom-header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .custom-header.header--middle-left {
+    grid-template-columns: 1fr auto auto;
+    column-gap: 40px;
+  }
+  .custom-header .header__heading-link {
+    margin: 0;
+    padding: 0;
+  }
+  .custom-header .header__icons {
+    padding: 0;
+    gap: 20px;
+  }
+  .custom-header .header__icons .header__icon--cart {
+    margin: 0 !important;
+  }
+  .custom-header .header__icons .header__icon {
+    width: 20px;
+    height: 20px;
+  }
+  .custom-header .desktop-localization-wrapper {
+    display: none;
+  }
+  .custom-header nav .list-menu {
+    gap: 40px;
+  }
+  .custom-header nav .list-menu li a,
+  .custom-header nav .list-menu li summary {
+    padding: 0;
+  }
+  .custom-header nav .list-menu li summary {
+    padding-right: 25px;
+  }
+  .custom-header nav .list-menu li span {
+    font-family: 'Roboto';
+    font-size: 18px;
+    line-height: 1.2em;
+    font-weight: 400;
+    text-decoration: none;
+    letter-spacing: 0;
+  }
+  .custom-header nav .list-menu li span.header__active-menu-item {
+    color: #57a014;
+  }
+  .custom-header nav .list-menu li .header__submenu {
+    border: 0px;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    background-color: #eef5e7;
+  }
+  .custom-header nav .list-menu li .header__submenu li a {
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.3em;
+    color: #000000;
+  }
+  .custom-header nav .list-menu li details[open] summary,
+  .custom-header nav .list-menu li .header__submenu li a:hover {
+    text-decoration: none;
+  }
 </style>
